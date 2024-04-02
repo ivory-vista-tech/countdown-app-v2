@@ -27,6 +27,7 @@ const CountDownPage = () => {
     durationMilliseconds = 5000,
   }: ShowAlertProps) => {
     const minutes = displayTimeMilliseconds / 1000 / 60;
+
     const alertMessage = `You have less than ${minutes} minutes!`;
 
     return {
@@ -40,6 +41,7 @@ const CountDownPage = () => {
 
   const { indicator: fiveMinutesWarning, message: fiveMinutesMessage } =
     showAlert({ displayTimeMilliseconds: 300000 });
+
   const { indicator: twoMinutesWarning, message: twoMinutesMessage } =
     showAlert({ displayTimeMilliseconds: 120000 });
 

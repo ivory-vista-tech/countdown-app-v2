@@ -1,9 +1,7 @@
 "use client";
 
-import { Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "@/providers/DataProvider";
-import { sizes } from "../constants/styles";
 import { getCurrentTime } from "@/utils/functions";
 
 const Time = () => {
@@ -22,16 +20,7 @@ const Time = () => {
 
   return (
     <div className="flex justify-center items-center h-[calc(100vh-280px)]">
-      <Typography
-        variant="h1"
-        sx={{
-          color: "white",
-          fontWeight: 900,
-          fontSize: sizes.amPmHoursIncluded,
-        }}
-      >
-        {currentTime}
-      </Typography>
+      <h1 className=" font-bold size-AmPm-included">{currentTime}</h1>
     </div>
   );
 };

@@ -53,6 +53,7 @@
   * {
     @apply border-border overscroll-none;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -62,7 +63,28 @@
   .message-text {
     @apply text-white font-extrabold text-center leading-7 h-full flex justify-center items-center text-lg lg:text-xl;
   }
+
   .icon {
-    @apply text-white text-[40px] md:text-[50px];
+    @apply text-[40px] md:text-[50px] text-gray-800 dark:text-white;
+  }
+
+  .glassmorphism {
+    @apply bg-[#0E1428] opacity-75 border;
+  }
+
+  .size-hour-included {
+    @apply text-[60px] sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px] text-gray-800 dark:text-white;
+  }
+
+  .size-hour-excluded {
+    @apply text-[80px] sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px] text-gray-800 dark:text-white;
+  }
+
+  .size-AmPm-included {
+    @apply text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
+  }
+
+  .size-message {
+    @apply text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
   }
 }

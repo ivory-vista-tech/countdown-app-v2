@@ -9,7 +9,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="sticky left-0 top-0 flex h-[calc(100vh-67px)] w-fit flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-28 text-white max-sm:hidden lg:w-[264px] backdrop-blur-lg border-x">
+    <section className="sticky left-0 top-0 flex h-[calc(100vh-67px)] w-fit flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-28 text-gray-800 dark:text-white max-sm:hidden lg:w-[264px] opacity-75 backdrop-blur-lg border-x">
       <div className="flex flex-1 flex-col gap-6">
         {sidebarLinks.map((item) => {
           const isActive =
@@ -23,6 +23,7 @@ const Sidebar = () => {
                 "flex gap-4 items-center p-4 rounded-lg justify-start",
                 {
                   "bg-primary": isActive,
+                  "text-white": isActive,
                 }
               )}
             >

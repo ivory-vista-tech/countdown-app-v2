@@ -19,16 +19,16 @@ const Signal = ({ message, closeButton = true, style = {} }: SignalProps) => {
     setIsPlaying(false);
   };
 
-  const classes = `h-[calc(100vh-67px)] w-full bg-red-700 animate-flash message-text`;
+  const classes = `h-[calc(100vh-67px)] min-h-[calc(100vh-67px)] w-full bg-red-700 animate-flash message-text`;
 
   return (
     <div className={classes}>
       {closeButton && (
         <IconButton
           onClick={handleClick}
-          sx={{ position: "absolute", right: 0, top: 0 }}
+          sx={{ position: "absolute", right: 0, top: "5%" }}
         >
-          <CloseIcon sx={{ fontSize: 100 }} />
+          <CloseIcon sx={{ fontSize: 80 }} />
         </IconButton>
       )}
 

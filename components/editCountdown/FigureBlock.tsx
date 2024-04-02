@@ -1,13 +1,10 @@
 "use client";
 
-import { Box, IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import React, { useContext } from "react";
 import { DataContext } from "@/providers/DataProvider";
-import { sizes } from "../constants/styles";
-
-const buttonStyle = { fontSize: { xs: 40, md: 60 }, color: "#1976d2" };
 
 interface FigureBlockProps {
   toggle: "hours" | "minutes" | "seconds";
@@ -40,34 +37,19 @@ const FigureBlock = ({ toggle, value }: FigureBlockProps) => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex flex-col h-full justify-center items-center">
       <IconButton onClick={toggleUp}>
-        <AddIcon sx={buttonStyle} />
+        <AddIcon className="text-primary text-[40px] md:text-[50px]" />
       </IconButton>
 
-      <Typography
-        variant="h1"
-        sx={{
-          color: "white",
-          fontWeight: 900,
-          fontSize: sizes.hoursIncluded,
-        }}
-      >
+      <h1 className="text-white font-bold size-hour-included">
         {value < 10 ? `0${value}` : value}
-      </Typography>
+      </h1>
 
       <IconButton onClick={toggleDown}>
-        <RemoveIcon sx={buttonStyle} />
+        <RemoveIcon className="text-primary text-[40px] md:text-[50px]" />
       </IconButton>
-    </Box>
+    </div>
   );
 };
 

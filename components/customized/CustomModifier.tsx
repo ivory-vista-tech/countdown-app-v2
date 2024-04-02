@@ -1,7 +1,6 @@
 import React from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { iconButtonStyle } from "../constants/styles";
 import CustomButton from "./CustomButton";
 
 interface CustomModifierProps {
@@ -23,7 +22,7 @@ const CustomModifier: React.FC<CustomModifierProps> = ({
     <>
       {condition && (
         <IconButton onClick={handleClose}>
-          <CloseIcon sx={iconButtonStyle} />
+          <CloseIcon className="icon" />
         </IconButton>
       )}
 
