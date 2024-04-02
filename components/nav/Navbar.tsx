@@ -2,16 +2,18 @@ import Link from "next/link";
 import React from "react";
 import ModeToggle from "../modeToggle/ModeToggle";
 import Image from "next/image";
+import MobileNav from "./MobileNav";
+import BrandIcon from "./BrandIcon";
 
 const Navbar = () => {
   return (
-    <nav className="w-full relative flex items-center justify-between mx-auto px-4 py-10 h-[60px] bg-red-500">
-      <Link href="/" className="flex flex-row items-center font-bold text-3xl">
-        <Image src="/logo512.png" alt="Logo" height={50} width={50} />
-        Aeon<span className="text-primary">Timer</span>
-      </Link>
+    <nav className="w-full relative flex items-center mx-auto px-4 py-8 h-[50px] bg-gray-200 dark:bg-[#0D1228] backdrop-blur-lg border">
+      <div className="flex-1">
+        <BrandIcon />
+      </div>
 
       <ModeToggle />
+      <MobileNav />
     </nav>
   );
 };

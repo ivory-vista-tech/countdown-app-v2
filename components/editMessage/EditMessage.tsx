@@ -10,8 +10,6 @@ const EditMessage = () => {
   const { setMessage, message } = useContext(DataContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(message);
-
     setMessage((prevState) => ({
       ...prevState,
       tempMessage: event?.target.value,
@@ -21,6 +19,7 @@ const EditMessage = () => {
   return (
     <Box
       component="form"
+      className="h-[calc(100vh-280px)] flex justify-center items-center"
       sx={{
         "& > :not(style)": {
           width: { xs: "40ch", sm: "55ch", md: "70ch", lg: "100ch" },

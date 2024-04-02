@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { DataContext } from "@/providers/DataProvider";
 import { getFormattedTime } from "@/utils/functions";
 import { sizes } from "../constants/styles";
@@ -25,7 +25,6 @@ const Timer = () => {
           color: "white",
           fontWeight: 900,
           flex: 1,
-          backgroundColor: "yellow",
           fontSize: hourIncluded ? sizes.hoursIncluded : sizes.hoursExcluded,
         }}
       >

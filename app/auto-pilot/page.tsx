@@ -1,9 +1,9 @@
-const Home = () => {
+const AutoPilotPage = () => {
   return (
     <div className="flex justify-center items-center h-[calc(100vh-280px)]">
-      HomePage
+      AutoPilotPage
     </div>
   );
 };
 
-export default Home;
+export default AutoPilotPage;

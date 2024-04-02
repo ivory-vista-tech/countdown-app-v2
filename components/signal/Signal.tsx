@@ -19,7 +19,7 @@ const Signal = ({ message, closeButton = true, style = {} }: SignalProps) => {
     setIsPlaying(false);
   };
 
-  const classes = `h-screen w-screen absolute bg-red-700 z-50 animate-flash message-text`;
+  const classes = `h-[calc(100vh-67px)] w-full bg-red-700 animate-flash message-text`;
 
   return (
     <div className={classes}>

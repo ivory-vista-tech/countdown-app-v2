@@ -1,16 +1,15 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { sidebarLinks } from "../constants";
+import { getIcon, sidebarLinks } from "../constants";
 
 const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="sticky left-0 top-0 flex h-[calc(100vh-80px)] w-fit flex-col justify-between bg-emerald-400 p-6 pt-28 text-white max-sm:hidden lg:w-[264px] px-10">
+    <section className="sticky left-0 top-0 flex h-[calc(100vh-67px)] w-fit flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-28 text-white max-sm:hidden lg:w-[264px] backdrop-blur-lg border-x">
       <div className="flex flex-1 flex-col gap-6">
         {sidebarLinks.map((item) => {
           const isActive =
@@ -23,16 +22,11 @@ const Sidebar = () => {
               className={cn(
                 "flex gap-4 items-center p-4 rounded-lg justify-start",
                 {
-                  "bg-blue-1": isActive,
+                  "bg-primary": isActive,
                 }
               )}
             >
-              <Image
-                src={item.imgURL}
-                alt={item.label}
-                width={24}
-                height={24}
-              />
+              {getIcon(item.imgURL)}
               <p className="text-lg font-semibold max-lg:hidden">
                 {item.label}
               </p>

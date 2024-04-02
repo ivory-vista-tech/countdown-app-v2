@@ -9,11 +9,11 @@ const fontStyle = {
   color: "white",
   fontWeight: 900,
   fontSize: {
-    xs: 100,
-    sm: 150,
-    md: 200,
-    lg: 350,
-    xl: 450,
+    xs: 70,
+    sm: 70,
+    md: 120,
+    lg: 120,
+    xl: 120,
   },
   justifyContent: "center",
   display: "flex",
@@ -24,14 +24,7 @@ const EditCountDown = () => {
   const { timeItems } = useContext(DataContext);
 
   return (
-    <Box
-      sx={{
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex justify-center items-center  h-[calc(100vh-280px)]">
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <FigureBlock value={timeItems.hours} toggle="hours" />
         <Typography variant="h1" sx={fontStyle}>
@@ -43,7 +36,7 @@ const EditCountDown = () => {
         </Typography>
         <FigureBlock value={timeItems.seconds} toggle="seconds" />
       </Box>
-    </Box>
+    </div>
   );
 };
 
