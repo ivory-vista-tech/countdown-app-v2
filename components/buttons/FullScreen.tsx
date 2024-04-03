@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { IconButton } from "@mui/material";
+import { DataContext } from "@/providers/DataProvider";
 
 const FullScreen = () => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const { isFullscreen, setIsFullscreen } = useContext(DataContext);
 
   const toggleFullscreen = () => {
     if (isFullscreen) {
@@ -40,7 +41,7 @@ const FullScreen = () => {
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, []);
+  }, [setIsFullscreen]);
 
   return (
     <IconButton onClick={toggleFullscreen}>

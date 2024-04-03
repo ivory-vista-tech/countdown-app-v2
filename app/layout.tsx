@@ -4,8 +4,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import DataProvider from "@/providers/DataProvider";
-import Navbar from "@/components/nav/Navbar";
-import Sidebar from "@/components/nav/Sidebar";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,15 +27,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
             disableTransitionOnChange
           >
             <DataProvider>
-              <main className="max-w-screen w-screen h-screen max-h-screen">
-                <Navbar />
+              {children}
 
-                <div className="flex w-screen">
-                  <Sidebar />
-
-                  <div className="flex-1">{children}</div>
-                </div>
-              </main>
+              <Toaster />
             </DataProvider>
           </ThemeProvider>
         </body>

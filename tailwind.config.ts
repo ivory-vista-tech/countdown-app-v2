@@ -57,6 +57,29 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        dark: {
+          1: "#0D1228",
+          2: "#161925",
+          3: "#252A41",
+          4: "#1E2757",
+        },
+        blue: {
+          1: "#0E78F9",
+        },
+        sky: {
+          1: "#C9DDFF",
+          2: "#ECF0FF",
+          3: "#F5FCFF",
+        },
+        orange: {
+          1: "#FF742E",
+        },
+        purple: {
+          1: "#830EF9",
+        },
+        yellow: {
+          1: "#F9A90E",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -87,6 +110,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         flash: "blink 4s infinite",
+      },
+      backgroundImage: {
+        hero: "url('https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       },
     },
   },

@@ -33,6 +33,9 @@ interface DataContextType {
   message: MessageItems;
   setMessage: React.Dispatch<React.SetStateAction<MessageItems>>;
   isVisible: boolean;
+  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  isFullscreen: boolean;
+  setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
   timeItems: TimeItems;
   setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
 }
@@ -47,6 +50,9 @@ const initialContext: DataContextType = {
   isPlaying: false,
   setIsPlaying: () => {},
   isVisible: false,
+  setIsVisible: () => {},
+  isFullscreen: false,
+  setIsFullscreen: () => {},
   timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
   message: { message: "", tempMessage: "" },
   setMessage: () => {},
@@ -67,6 +73,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [editMode, setEditMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useLocalStorage({
     key: "twentyFourHoursFormat",
     defaultValue: JSON.stringify(true),
@@ -152,6 +159,9 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         message,
         setMessage,
         isVisible,
+        setIsVisible,
+        isFullscreen,
+        setIsFullscreen,
         twentyFourHoursFormat,
         setTwentyFourHoursFormat,
       }}

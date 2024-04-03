@@ -45,11 +45,6 @@ export const sidebarLinks = [
     label: "Home",
   },
   {
-    imgURL: "AutoAwesome",
-    route: "/auto-pilot",
-    label: "Auto Pilot",
-  },
-  {
     imgURL: "HourglassTop",
     route: "/countdown",
     label: "Countdown",

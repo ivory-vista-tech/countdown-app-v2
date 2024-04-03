@@ -50,7 +50,7 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
       variant="text"
       size="large"
       onClick={handleClick}
-      sx={{ color: isEqualTimeItems ? "default" : "grey" }}
+      className={isEqualTimeItems ? "text-default" : "text-gray-500"}
       disableRipple
     >
       <Typography sx={{ fontSize: { xs: 20, md: 30 } }}>

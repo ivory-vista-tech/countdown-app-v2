@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useContext } from "react";
-import { Box, Typography } from "@mui/material";
 import { DataContext } from "@/providers/DataProvider";
 import FigureBlock from "./FigureBlock";
 
@@ -25,17 +24,21 @@ const EditCountDown = () => {
 
   return (
     <div className="flex justify-center items-center  h-[calc(100vh-280px)]">
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <div className="flex">
         <FigureBlock value={timeItems.hours} toggle="hours" />
-        <Typography variant="h1" sx={fontStyle}>
+
+        <h1 className="size-hour-included flex justify-center items-center">
           :
-        </Typography>
+        </h1>
+
         <FigureBlock value={timeItems.minutes} toggle="minutes" />
-        <Typography variant="h1" sx={fontStyle}>
+
+        <h1 className="size-hour-included flex justify-center items-center">
           :
-        </Typography>
+        </h1>
+
         <FigureBlock value={timeItems.seconds} toggle="seconds" />
-      </Box>
+      </div>
     </div>
   );
 };

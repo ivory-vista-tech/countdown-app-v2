@@ -60,10 +60,6 @@
 }
 
 @layer utilities {
-  .message-text {
-    @apply text-white font-extrabold text-center leading-7 h-full flex justify-center items-center text-lg lg:text-xl;
-  }
-
   .icon {
     @apply text-[40px] md:text-[50px] text-gray-800 dark:text-white;
   }
