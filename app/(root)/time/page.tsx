@@ -21,7 +21,7 @@ const TimePage = () => {
       <Time />
     </>
   ) : (
-    <div className="h-screen" />
+    <div className="h-[100px]" />
   );
 };
 

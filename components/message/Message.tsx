@@ -13,7 +13,7 @@ const Message = () => {
   return editMode ? (
     <EditMessage />
   ) : (
-    <div className="flex justify-center items-center h-[calc(100vh-280px)]">
+    <div className="flex justify-center items-center h-[calc(100vh-380px)]">
       <h1 className="size-message font-bold text-center flex h-full justify-center items-center leading-none">
         {message}
       </h1>

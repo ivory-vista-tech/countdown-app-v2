@@ -19,7 +19,7 @@ const Time = () => {
   }, [twentyFourHoursFormat]);
 
   return (
-    <div className="flex justify-center items-center h-[calc(100vh-280px)]">
+    <div className="flex justify-center items-center h-[calc(100vh-380px)]">
       <h1 className=" font-bold size-AmPm-included">{currentTime}</h1>
     </div>
   );

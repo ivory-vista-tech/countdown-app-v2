@@ -24,8 +24,8 @@ const ModeToggle = () => {
 
   return isClient ? (
     <Button variant="outline" size="icon" onClick={changeTheme}>
-      {theme === "light" && <LightMode className="h-5 w-5" />}
-      {theme === "dark" && <DarkMode className="h-5 w-5" />}
+      {theme === "light" && <LightMode className="h-5 w-5 text-black" />}
+      {theme === "dark" && <DarkMode className="h-5 w-5 text-white" />}
       <span className="sr-only">Toggle theme</span>
     </Button>
   ) : null;

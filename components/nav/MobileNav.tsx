@@ -7,18 +7,32 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu } from "@mui/icons-material";
 import BrandIcon from "./BrandIcon";
+import { useContext } from "react";
+import { DataContext } from "@/providers/DataProvider";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const { isFullscreen } = useContext(DataContext);
 
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="ml-4 sm:hidden" />
+        <Menu
+          className={cn({
+            "sm:hidden ml-4": !isFullscreen,
+            "icon max-sm:hidden": isFullscreen,
+          })}
+        />
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="flex w-fit sm:hidden flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-10 text-white backdrop-blur-lg border-x"
+        className={cn(
+          "flex w-fit flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-10 text-white backdrop-blur-lg border-x",
+          {
+            "sm:hidden": !isFullscreen,
+            "w-[264px]": isFullscreen,
+          }
+        )}
       >
         <div className="flex flex-1 flex-col gap-6">
           <div className="mb-10">

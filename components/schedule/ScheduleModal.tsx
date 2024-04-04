@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
 import { Form } from "../ui/form";
@@ -9,6 +9,10 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Input } from "../ui/input";
 import { IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { cn } from "@/lib/utils";
+import { getMilliseconds } from "@/utils/functions";
+import { DataContext } from "@/providers/DataProvider";
+import { useRouter } from "next/navigation";
 
 interface MeetingModalProps {
   isOpen: boolean;
@@ -23,11 +27,13 @@ type FormValues = {
 
 const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
   const [isClient, setIsClient] = useState(false);
+  const { timeItems, setTimeItems } = useContext(DataContext);
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     defaultValues: {
-      sessions: [{ duration: "" }],
+      sessions: [{ duration: "" }, { duration: "" }],
     },
   });
 
@@ -52,11 +58,23 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
   };
 
   const onSubmit = async (values: FormValues) => {
-    console.log(values);
+    const converted = values?.sessions.map(({ duration }) =>
+      getMilliseconds({ hours: 0, minutes: Number(duration), seconds: 0 })
+    );
+
+    setTimeItems({
+      ...timeItems,
+      autoMode: true,
+      workQueue: [...converted],
+    });
 
     showToast();
 
     reset();
+
+    onClose();
+
+    router.push("/countdown");
   };
 
   useEffect(() => {
@@ -78,7 +96,7 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
             >
               <div>
                 <label>
-                  Sessions{" "}
+                  Enter Sessions duration{" "}
                   <span className="text-gray-600 text-sm">(in minutes)</span>
                 </label>
                 <div>
@@ -88,26 +106,32 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
                       key={field.id}
                     >
                       <Input
-                        className="my-2"
+                        className="my-2 placeholder-gray-600"
                         type="number"
+                        placeholder={`Session ${index + 1}`}
                         required
-                        {...register(`sessions.${index}.duration` as const)}
+                        {...register(`sessions.${index}.duration`)}
                       />
 
-                      {index > 0 && (
+                      {
                         <IconButton
                           className="p-0"
-                          onClick={() => remove(index)}
+                          onClick={index > 0 ? () => remove(index) : () => {}}
                         >
-                          <Close className="text-white p-2 size-10 hover:bg-dark-3" />
+                          <Close
+                            className={cn("p-2 size-10 hover:bg-dark-3", {
+                              "text-white": index > 1,
+                              "text-opacity-0": index <= 1,
+                            })}
+                          />
                         </IconButton>
-                      )}
+                      }
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex gap-4 justify-center items-center">
+              <div className="flex gap-4  items-center">
                 <Button
                   type="button"
                   variant="outline"

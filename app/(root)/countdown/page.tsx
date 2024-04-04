@@ -1,75 +1,33 @@
 "use client";
 
+import Alert from "@/components/alert/Alert";
 import Controls from "@/components/controls/Controls";
 import CountDown from "@/components/countdown/CountDown";
-import Signal from "@/components/signal/Signal";
 import TimeUp from "@/components/timeUp/TimeUp";
 import { DataContext } from "@/providers/DataProvider";
 import { useState, useEffect, useContext } from "react";
 
 const CountDownPage = () => {
-  const {
-    isVisible,
-    setFeature,
-    showTimeUp,
-    isPlaying,
-    timeItems: { totalMilliseconds },
-  } = useContext(DataContext);
+  const { isVisible, setFeature, showAlert } = useContext(DataContext);
   const [isClient, setIsClient] = useState(false);
-
-  interface ShowAlertProps {
-    displayTimeMilliseconds: number;
-    durationMilliseconds?: number;
-  }
-
-  const showAlert = ({
-    displayTimeMilliseconds,
-    durationMilliseconds = 5000,
-  }: ShowAlertProps) => {
-    const minutes = displayTimeMilliseconds / 1000 / 60;
-
-    const alertMessage = `You have less than ${minutes} minutes!`;
-
-    return {
-      indicator:
-        isPlaying &&
-        totalMilliseconds >= displayTimeMilliseconds - durationMilliseconds &&
-        totalMilliseconds <= displayTimeMilliseconds,
-      message: alertMessage,
-    };
-  };
-
-  const { indicator: fiveMinutesWarning, message: fiveMinutesMessage } =
-    showAlert({ displayTimeMilliseconds: 300000 });
-
-  const { indicator: twoMinutesWarning, message: twoMinutesMessage } =
-    showAlert({ displayTimeMilliseconds: 120000 });
 
   useEffect(() => {
     setIsClient(true);
+
     setFeature("countdown");
   }, [setFeature]);
 
   return isClient ? (
     <>
-      {fiveMinutesWarning && (
-        <Signal message={fiveMinutesMessage} closeButton={false} />
-      )}
+      <Alert displayTimeMilliseconds={300000} />
 
-      {twoMinutesWarning && (
-        <Signal message={twoMinutesMessage} closeButton={false} />
-      )}
+      <Alert displayTimeMilliseconds={120000} />
 
-      {showTimeUp && <TimeUp />}
+      <TimeUp />
 
-      {!fiveMinutesWarning &&
-        !twoMinutesWarning &&
-        !showTimeUp &&
-        (isVisible ? <Controls /> : <div className="h-[100px]" />)}
+      {!showAlert && (isVisible ? <Controls /> : <div className="h-[100px]" />)}
 
-      {!fiveMinutesWarning && !twoMinutesWarning && !showTimeUp && (
-        <CountDown />
-      )}
+      {!showAlert && <CountDown />}
     </>
   ) : (
     <div className="h-screen" />

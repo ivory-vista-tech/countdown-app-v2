@@ -61,11 +61,11 @@
 
 @layer utilities {
   .icon {
-    @apply text-[40px] md:text-[50px] text-gray-800 dark:text-white;
+    @apply text-[30px] md:text-[50px] text-gray-800 dark:text-white;
   }
 
   .glassmorphism {
-    @apply bg-[#0E1428] opacity-75 border;
+    @apply bg-dark-1 opacity-75 border;
   }
 
   .size-hour-included {

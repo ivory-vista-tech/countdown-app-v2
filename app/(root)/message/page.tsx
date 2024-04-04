@@ -19,6 +19,8 @@ const MessagePage = () => {
       {isVisible ? <Controls /> : <div className="h-[100px]" />}
 
       <Message />
+
+      <div className="h-[100px]" />
     </>
   ) : (
     <div className="h-screen" />

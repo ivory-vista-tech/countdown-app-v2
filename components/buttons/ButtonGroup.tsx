@@ -5,12 +5,13 @@ import { useContext } from "react";
 import PlayAndPause from "./PlayAndPause";
 import Reset from "./Reset";
 import FullScreen from "./FullScreen";
+import MobileNav from "../nav/MobileNav";
 
 const ButtonGroup = () => {
-  const { feature } = useContext(DataContext);
+  const { feature, isFullscreen } = useContext(DataContext);
 
   return (
-    <div>
+    <div className="flex gap-4">
       {feature === "countdown" && (
         <>
           <PlayAndPause />
@@ -18,6 +19,8 @@ const ButtonGroup = () => {
         </>
       )}
       <FullScreen />
+
+      {isFullscreen && <MobileNav />}
     </div>
   );
 };

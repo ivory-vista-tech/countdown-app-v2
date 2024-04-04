@@ -18,15 +18,17 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
           <div className="flex w-screen">
             <Sidebar />
 
-            <section className="flex flex-1 flex-col p-14 justify-start items-center">
-              <div className="w-full max-w-[1440px]">{children}</div>
+            <section className="flex flex-1 flex-col p-7 md:p-14  justify-center items-center">
+              <div className="w-full max-w-[1440px] h-full min-h-full">
+                {children}
+              </div>
             </section>
           </div>
         </>
       )}
 
       {isFullscreen && (
-        <div className="w-full h-full min-h-full min-w-full bg-white dark:bg-dark-2 flex flex-col justify-center">
+        <div className="w-full min-w-full h-full min-h-full bg-white dark:bg-dark-2 flex flex-col justify-center">
           {children}
         </div>
       )}

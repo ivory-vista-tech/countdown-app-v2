@@ -11,11 +11,11 @@ interface SignalProps {
   style?: React.CSSProperties;
 }
 
-const Signal = ({ message, closeButton = true, style = {} }: SignalProps) => {
-  const { setShowTimeUp, setIsPlaying } = useContext(DataContext);
+const Signal = ({ message, closeButton = true }: SignalProps) => {
+  const { setShowAlert, setIsPlaying } = useContext(DataContext);
 
   const handleClick = () => {
-    setShowTimeUp(false);
+    setShowAlert(false);
     setIsPlaying(false);
   };
 

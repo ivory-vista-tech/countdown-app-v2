@@ -12,6 +12,8 @@ interface TimeItems {
   minutes: number;
   seconds: number;
   totalMilliseconds: number;
+  autoMode: boolean;
+  workQueue: number[];
 }
 
 interface MessageItems {
@@ -22,8 +24,8 @@ interface MessageItems {
 interface DataContextType {
   feature: string;
   setFeature: React.Dispatch<React.SetStateAction<string>>;
-  showTimeUp: boolean;
-  setShowTimeUp: React.Dispatch<React.SetStateAction<boolean>>;
+  showAlert: boolean;
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
   editMode: boolean;
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   isPlaying: boolean;
@@ -43,8 +45,8 @@ interface DataContextType {
 const initialContext: DataContextType = {
   feature: "countdown",
   setFeature: () => {},
-  showTimeUp: false,
-  setShowTimeUp: () => {},
+  showAlert: false,
+  setShowAlert: () => {},
   editMode: false,
   setEditMode: () => {},
   isPlaying: false,
@@ -53,7 +55,14 @@ const initialContext: DataContextType = {
   setIsVisible: () => {},
   isFullscreen: false,
   setIsFullscreen: () => {},
-  timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
+  timeItems: {
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    totalMilliseconds: 0,
+    autoMode: false,
+    workQueue: [],
+  },
   message: { message: "", tempMessage: "" },
   setMessage: () => {},
   setTimeItems: () => {},
@@ -69,7 +78,7 @@ interface DataProviderProps {
 
 const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [feature, setFeature] = useState("countdown");
-  const [showTimeUp, setShowTimeUp] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -92,6 +101,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       minutes: 10,
       seconds: 0,
       totalMilliseconds: 600000,
+      autoMode: false,
+      workQueue: [],
     }),
   });
 
@@ -120,10 +131,10 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
     if (isPlaying && timeItems.totalMilliseconds > 0) {
       timeoutId = setTimeout(() => {
-        setTimeItems({
-          ...timeItems,
-          totalMilliseconds: timeItems.totalMilliseconds - ONE_SECOND,
-        });
+        setTimeItems((prevTimeItems: { totalMilliseconds: number }) => ({
+          ...prevTimeItems,
+          totalMilliseconds: prevTimeItems.totalMilliseconds - ONE_SECOND,
+        }));
       }, 975);
     }
 
@@ -132,8 +143,35 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     };
   }, [isPlaying, timeItems, setTimeItems]);
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    const processWorkQueue = (queue: number[]) => {
+      if (queue.length > 0) {
+        setIsPlaying(true);
+
+        setTimeItems((prevTimeItems: any) => ({
+          ...prevTimeItems,
+          totalMilliseconds: queue[0],
+          workQueue: queue.slice(1),
+          autoMode: queue.length > 1,
+        }));
+      } else {
+        setIsPlaying(false);
+      }
+    };
+
+    if (timeItems.autoMode && timeItems.workQueue.length > 0 && !isPlaying) {
+      processWorkQueue(timeItems.workQueue);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isPlaying, timeItems, setTimeItems]);
+
   if (timeItems.totalMilliseconds === 0) {
-    setShowTimeUp(true);
+    setShowAlert(true);
 
     setIsPlaying(false);
 
@@ -148,8 +186,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       value={{
         feature,
         setFeature,
-        showTimeUp,
-        setShowTimeUp,
+        showAlert,
+        setShowAlert,
         editMode,
         setEditMode,
         isPlaying,

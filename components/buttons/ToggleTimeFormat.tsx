@@ -2,10 +2,10 @@
 
 import { DataContext } from "@/providers/DataProvider";
 import React, { useContext } from "react";
-import CustomButton from "../customized/CustomButton";
+import { Button } from "../ui/button";
 
 const ToggleTimeFormat = () => {
-  const { feature, setTwentyFourHoursFormat, twentyFourHoursFormat } =
+  const { setTwentyFourHoursFormat, twentyFourHoursFormat } =
     useContext(DataContext);
 
   const handleToggleFormat = () => {
@@ -15,11 +15,15 @@ const ToggleTimeFormat = () => {
   const buttonName = twentyFourHoursFormat ? "12 HR FORMAT" : "24 HR FORMAT";
 
   return (
-    <CustomButton
-      name={buttonName}
+    <Button
+      type="submit"
       onClick={handleToggleFormat}
-      style={{ display: feature === "time" ? "block" : "none" }}
-    />
+      className={
+        "bg-blue-1 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white"
+      }
+    >
+      {buttonName.toUpperCase()}
+    </Button>
   );
 };
 
