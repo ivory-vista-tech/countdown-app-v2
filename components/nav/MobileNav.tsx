@@ -27,7 +27,7 @@ const MobileNav = () => {
       <SheetContent
         side="left"
         className={cn(
-          "flex w-fit flex-col justify-between bg-gray-200 dark:bg-[#0D1228] p-6 pt-10 text-white backdrop-blur-lg border-x",
+          "flex w-fit p-0 flex-col justify-between bg-gray-200 dark:bg-[#0D1228] pt-10 text-white backdrop-blur-lg border-x",
           {
             "sm:hidden": !isFullscreen,
             "w-[264px]": isFullscreen,
@@ -35,7 +35,7 @@ const MobileNav = () => {
         )}
       >
         <div className="flex flex-1 flex-col gap-6">
-          <div className="mb-10">
+          <div className="flex justify-center mb-10">
             <BrandIcon />
           </div>
 
@@ -47,15 +47,15 @@ const MobileNav = () => {
               <Link
                 href={item.route}
                 key={item.label}
-                className={cn(
-                  "flex gap-4 items-center p-4 rounded-lg justify-start",
-                  {
-                    "bg-primary": isActive,
-                  }
-                )}
+                className={cn("flex gap-4 items-center p-2  justify-start", {
+                  "bg-dark-3 opacity-90 backdrop-blur-lg overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
+                    isActive,
+                })}
               >
-                {getIcon(item.imgURL)}
-                <p className="text-lg font-semibold ">{item.label}</p>
+                <div className="flex gap-4 items-center px-8 py-2 rounded-lg justify-start">
+                  {getIcon(item.imgURL)}
+                  <p className="text font-medium ">{item.label}</p>
+                </div>
               </Link>
             );
           })}

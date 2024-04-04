@@ -87,7 +87,7 @@ export const HoverEffect = ({ className, setSchedule }: HomeCardProps) => {
 
               <div className="flex flex-col gap-2">
                 <h1 className="text-2xl font-bold">{title}</h1>
-                <p className="font-normal">{description}</p>
+                <p className="font-normal text-gray-500">{description}</p>
               </div>
             </div>
           </div>
