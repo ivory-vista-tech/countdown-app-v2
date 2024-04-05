@@ -12,8 +12,8 @@ interface TimeItems {
   minutes: number;
   seconds: number;
   totalMilliseconds: number;
-  autoMode: boolean;
-  workQueue: number[];
+  autoMode?: boolean;
+  workQueue?: number[];
 }
 
 interface MessageItems {
