@@ -8,7 +8,8 @@ import EditCountDown from "../editCountdown/EditCountDown";
 import { cn } from "@/lib/utils";
 
 const Timer = () => {
-  const { timeItems, isPlaying, isVisible, editMode } = useContext(DataContext);
+  const { timeItems, isPlaying, isVisible, editMode, feature } =
+    useContext(DataContext);
 
   const currentTime = getFormattedTime(timeItems.totalMilliseconds);
   const hourIncluded = currentTime.length > 5;
@@ -29,7 +30,7 @@ const Timer = () => {
         {currentTime}
       </h1>
 
-      {isVisible && !isPlaying ? (
+      {isVisible && !isPlaying && feature !== "auto-mode" ? (
         <PresetBlock />
       ) : (
         <div className="h-[100px]" />

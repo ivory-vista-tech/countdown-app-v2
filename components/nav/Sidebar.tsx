@@ -20,7 +20,7 @@ const Sidebar = () => {
               href={item.route}
               key={item.label}
               className={cn({
-                " bg-dark-3 opacity-90 backdrop-blur-lg overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700 ":
+                "bg-primary overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
                   isActive,
                 "text-white": isActive,
               })}

@@ -48,7 +48,7 @@ const MobileNav = () => {
                 href={item.route}
                 key={item.label}
                 className={cn("flex gap-4 items-center p-2  justify-start", {
-                  "bg-dark-3 opacity-90 backdrop-blur-lg overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
+                  "bg-primary overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
                     isActive,
                 })}
               >

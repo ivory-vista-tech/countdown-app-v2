@@ -30,6 +30,8 @@ interface DataContextType {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   isPlaying: boolean;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  isBreakTime: boolean;
+  setIsBreakTime: React.Dispatch<React.SetStateAction<boolean>>;
   twentyFourHoursFormat: boolean;
   setTwentyFourHoursFormat: React.Dispatch<React.SetStateAction<boolean>>;
   message: MessageItems;
@@ -51,6 +53,8 @@ const initialContext: DataContextType = {
   setEditMode: () => {},
   isPlaying: false,
   setIsPlaying: () => {},
+  isBreakTime: false,
+  setIsBreakTime: () => {},
   isVisible: false,
   setIsVisible: () => {},
   isFullscreen: false,
@@ -81,6 +85,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isBreakTime, setIsBreakTime] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useLocalStorage({
@@ -138,16 +143,23 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       }, 975);
     }
 
+    if (
+      timeItems.totalMilliseconds === 1000 &&
+      timeItems.workQueue.length > 0
+    ) {
+      setIsBreakTime(true);
+    }
+
     return () => {
       clearTimeout(timeoutId);
     };
   }, [isPlaying, timeItems, setTimeItems]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-
     const processWorkQueue = (queue: number[]) => {
       if (queue.length > 0) {
+        setShowAlert(false);
+
         setIsPlaying(true);
 
         setTimeItems((prevTimeItems: any) => ({
@@ -161,12 +173,16 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       }
     };
 
-    if (timeItems.autoMode && timeItems.workQueue.length > 0 && !isPlaying) {
-      processWorkQueue(timeItems.workQueue);
-    }
+    const autoStartNextSession = setTimeout(() => {
+      setIsBreakTime(false);
+
+      if (!isPlaying && timeItems.autoMode && timeItems.workQueue.length > 0) {
+        processWorkQueue(timeItems.workQueue);
+      }
+    }, 5000);
 
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(autoStartNextSession);
     };
   }, [isPlaying, timeItems, setTimeItems]);
 
@@ -175,10 +191,10 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
     setIsPlaying(false);
 
-    setTimeItems({
-      ...timeItems,
-      totalMilliseconds: getMilliseconds(timeItems),
-    });
+    setTimeItems((prevTimeItems: any) => ({
+      ...prevTimeItems,
+      totalMilliseconds: getMilliseconds(prevTimeItems),
+    }));
   }
 
   return (
@@ -192,6 +208,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         setEditMode,
         isPlaying,
         setIsPlaying,
+        isBreakTime,
+        setIsBreakTime,
         timeItems,
         setTimeItems,
         message,

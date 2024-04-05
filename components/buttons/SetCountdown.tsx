@@ -50,13 +50,7 @@ const SetTime = () => {
         </IconButton>
       )}
 
-      <Button
-        type="submit"
-        onClick={handleConfirm}
-        className={
-          "bg-blue-1 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white"
-        }
-      >
+      <Button type="submit" onClick={handleConfirm} className="timer-button">
         {buttonName.toUpperCase()}
       </Button>
     </>

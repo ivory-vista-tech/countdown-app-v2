@@ -18,9 +18,7 @@ const ToggleTimeFormat = () => {
     <Button
       type="submit"
       onClick={handleToggleFormat}
-      className={
-        "bg-blue-1 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white"
-      }
+      className={"timer-button"}
     >
       {buttonName.toUpperCase()}
     </Button>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ScheduleModal from "@/components/schedule/ScheduleModal";
-import { HoverEffect } from "@/components/features/HoverEffect";
+import Features from "@/components/features/Features";
 
 const Home = () => {
   const [schedule, setSchedule] = useState<boolean>(false);
@@ -22,7 +22,7 @@ const Home = () => {
       </div>
 
       <div className="bg-dark-1 opacity-90 border p-2  rounded-lg">
-        <HoverEffect setSchedule={() => setSchedule(true)} />
+        <Features />
       </div>
 
       <ScheduleModal

@@ -64,6 +64,10 @@
     @apply text-[30px] md:text-[50px] text-gray-800 dark:text-white;
   }
 
+  .timer-button {
+    @apply bg-blue-1 border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white;
+  }
+
   .glassmorphism {
     @apply bg-dark-1 opacity-75 border;
   }

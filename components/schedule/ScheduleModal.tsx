@@ -12,7 +12,6 @@ import { Close } from "@mui/icons-material";
 import { cn } from "@/lib/utils";
 import { getMilliseconds } from "@/utils/functions";
 import { DataContext } from "@/providers/DataProvider";
-import { useRouter } from "next/navigation";
 
 interface MeetingModalProps {
   isOpen: boolean;
@@ -29,7 +28,6 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
   const [isClient, setIsClient] = useState(false);
   const { timeItems, setTimeItems } = useContext(DataContext);
   const { toast } = useToast();
-  const router = useRouter();
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -73,8 +71,6 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
     reset();
 
     onClose();
-
-    router.push("/countdown");
   };
 
   useEffect(() => {
