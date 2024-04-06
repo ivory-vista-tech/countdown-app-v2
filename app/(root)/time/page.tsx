@@ -16,7 +16,11 @@ const TimePage = () => {
 
   return isClient ? (
     <>
-      {isVisible ? <Controls /> : <div className="h-[100px]" />}
+      {isVisible ? (
+        <Controls setSchedule={undefined} />
+      ) : (
+        <div className="h-[100px]" />
+      )}
 
       <Time />
     </>
