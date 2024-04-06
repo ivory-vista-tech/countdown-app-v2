@@ -30,7 +30,7 @@ const Timer = () => {
         {currentTime}
       </h1>
 
-      {isVisible && !isPlaying && feature !== "auto-mode" ? (
+      {isVisible && !isPlaying && feature !== "auto-pilot" ? (
         <PresetBlock />
       ) : (
         <div className="h-[100px]" />

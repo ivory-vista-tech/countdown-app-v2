@@ -8,17 +8,18 @@ import { DataContext } from "@/providers/DataProvider";
 import Alert from "@/components/alert/Alert";
 import TimeUp from "@/components/timeUp/TimeUp";
 import Signal from "@/components/signal/Signal";
+import Controls from "@/components/controls/Controls";
 
 const AutoPilotPage = () => {
   const [schedule, setSchedule] = useState<boolean>(false);
   const [isClient, setIsClient] = useState(false);
-  const { setFeature, showAlert, timeItems, isBreakTime } =
+  const { setFeature, showAlert, timeItems, isBreakTime, isVisible } =
     useContext(DataContext);
 
   useEffect(() => {
     setIsClient(true);
 
-    setFeature("auto-mode");
+    setFeature("auto-pilot");
   }, [setFeature]);
 
   return isClient ? (
@@ -31,9 +32,16 @@ const AutoPilotPage = () => {
 
       {!timeItems.autoMode && <TimeUp />}
 
+      {!showAlert &&
+        (isVisible ? (
+          <Controls setSchedule={setSchedule} />
+        ) : (
+          <div className="h-[100px]" />
+        ))}
+
       {!showAlert && <CountDown />}
 
-      {!showAlert && (
+      {/* {!showAlert && (
         <div className="flex justify-end">
           <div
             className="flex justify-center size-14 bg-primary rounded-full items-center shadow-md cursor-pointer"
@@ -42,7 +50,7 @@ const AutoPilotPage = () => {
             <Add />
           </div>
         </div>
-      )}
+      )} */}
 
       <ScheduleModal
         isOpen={schedule}

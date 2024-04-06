@@ -25,7 +25,12 @@ const CountDownPage = () => {
 
       <TimeUp />
 
-      {!showAlert && (isVisible ? <Controls /> : <div className="h-[100px]" />)}
+      {!showAlert &&
+        (isVisible ? (
+          <Controls setSchedule={undefined} />
+        ) : (
+          <div className="h-[100px]" />
+        ))}
 
       {!showAlert && <CountDown />}
     </>
