@@ -2,9 +2,9 @@
 
 import React, { useContext, useMemo } from "react";
 import { isEqual } from "lodash";
-import { Button, Typography } from "@mui/material";
 import { DataContext } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
+import { cn } from "@/lib/utils";
 
 interface TimeItems {
   hours: number;
@@ -22,6 +22,7 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
 
   const parseTime = (timeString: string) => {
     const [hours, minutes, seconds] = timeString.split(":");
+
     return {
       hours: parseInt(hours),
       minutes: parseInt(minutes),
@@ -46,17 +47,15 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
   const isEqualTimeItems = isEqual(timeItems, newTimeItem);
 
   return (
-    <Button
-      variant="text"
-      size="large"
+    <div
       onClick={handleClick}
-      className={isEqualTimeItems ? "text-default" : "text-gray-500"}
-      disableRipple
+      className={cn("cursor-pointer", {
+        "text-primary": isEqualTimeItems,
+        "text-gray-500": !isEqualTimeItems,
+      })}
     >
-      <Typography sx={{ fontSize: { xs: 20, md: 30 } }}>
-        {presetTime}
-      </Typography>
-    </Button>
+      <h1 className="text-[20px] md:text-[30px]">{presetTime}</h1>
+    </div>
   );
 };
 

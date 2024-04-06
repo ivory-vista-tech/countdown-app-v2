@@ -1,55 +1,35 @@
 "use client";
 
 import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { useContext } from "react";
 import { DataContext } from "@/providers/DataProvider";
+import { Textarea } from "../ui/textarea";
+import { Label } from "../ui/label";
 
 const EditMessage = () => {
   const { setMessage, message } = useContext(DataContext);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMessage((prevState) => ({
-      ...prevState,
-      tempMessage: event?.target.value,
-    }));
-  };
-
   return (
-    <Box
-      component="form"
-      className="h-[calc(100vh-280px)] flex justify-center items-center"
-      sx={{
-        "& > :not(style)": {
-          width: { xs: "40ch", sm: "55ch", md: "70ch", lg: "100ch" },
-        },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField
-        id="message"
-        label="Message"
-        variant="outlined"
-        placeholder="Enter Message Here!"
-        defaultValue={message.message}
-        multiline
-        rows={10}
-        onChange={handleChange}
-        sx={{
-          "& .MuiInputBase-input": {
-            color: "white",
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white",
-          },
-          "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white",
-          },
-        }}
-      />
-    </Box>
+    <div className="flex h-[calc(100vh-380px)] w-full flex-col justify-center items-center">
+      <form className="flex flex-col gap-4">
+        <Label>Message</Label>
+        <Textarea
+          id="message"
+          required
+          placeholder="Enter Message Here!"
+          className="placeholder:text-gray-500 w-[300px] md:w-[600px]"
+          rows={6}
+          maxLength={50}
+          defaultValue={message.message}
+          onChange={(event) => {
+            setMessage((prevState) => ({
+              ...prevState,
+              tempMessage: event?.target.value,
+            }));
+          }}
+        />
+      </form>
+    </div>
   );
 };
 
