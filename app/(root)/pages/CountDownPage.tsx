@@ -18,7 +18,7 @@ const CountDownPage = () => {
   }, [setFeature]);
 
   return isClient ? (
-    <>
+    <div className="flex flex-col size-full">
       <Alert displayTimeMilliseconds={300000} />
 
       <Alert displayTimeMilliseconds={120000} />
@@ -32,8 +32,12 @@ const CountDownPage = () => {
           <div className="h-[100px]" />
         ))}
 
-      {!showAlert && <CountDown />}
-    </>
+      {!showAlert && (
+        <div className="flex-1">
+          <CountDown />
+        </div>
+      )}
+    </div>
   ) : (
     <div className="h-screen" />
   );

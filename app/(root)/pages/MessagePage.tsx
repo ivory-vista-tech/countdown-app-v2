@@ -15,17 +15,19 @@ const MessagePage = () => {
   }, [setFeature]);
 
   return isClient ? (
-    <>
+    <div className="flex flex-col size-full">
       {isVisible ? (
         <Controls setSchedule={undefined} />
       ) : (
         <div className="h-[100px]" />
       )}
 
-      <Message />
+      <div className="flex-1">
+        <Message />
+      </div>
 
       <div className="h-[100px]" />
-    </>
+    </div>
   ) : (
     <div className="h-screen" />
   );

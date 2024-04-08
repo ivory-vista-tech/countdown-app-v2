@@ -15,7 +15,7 @@ const TimePage = () => {
   }, [setFeature]);
 
   return isClient ? (
-    <>
+    <div className="flex flex-col size-full">
       {isVisible ? (
         <Controls setSchedule={undefined} />
       ) : (
@@ -23,9 +23,11 @@ const TimePage = () => {
       )}
 
       <Time />
-    </>
+
+      <div className="h-[100px]" />
+    </div>
   ) : (
-    <div className="h-[100px]" />
+    <div className="h-screen" />
   );
 };
 

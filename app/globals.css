@@ -85,6 +85,6 @@
   }
 
   .size-message {
-    @apply text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
+    @apply text-[30px] sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px];
   }
 }

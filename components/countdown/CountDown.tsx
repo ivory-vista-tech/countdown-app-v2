@@ -18,7 +18,7 @@ const Timer = () => {
   return editMode ? (
     <EditCountDown />
   ) : (
-    <div className="flex flex-col justify-between items-center h-[calc(100vh-280px)] w-full">
+    <div className="flex flex-col justify-between items-center size-full">
       <h1
         className={cn(
           "w-full flex justify-center items-center text-center font-bold flex-1",
@@ -37,7 +37,7 @@ const Timer = () => {
         <div className="h-[100px]" />
       )}
 
-      {feature === "auto-pilot" && <ScheduleStepper queueSize={5} />}
+      {/* {feature === "auto-pilot" && <ScheduleStepper queueSize={5} />} */}
     </div>
   );
 };
