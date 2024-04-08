@@ -2,19 +2,18 @@
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { getIcon, sidebarLinks } from "../constants";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu } from "@mui/icons-material";
 import BrandIcon from "./BrandIcon";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "@/providers/DataProvider";
 
 const MobileNav = () => {
-  const pathname = usePathname();
   const { isFullscreen, setFeature, feature } = useContext(DataContext);
+  const [open, setOpen] = useState(false);
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <Menu
           className={cn({
@@ -45,6 +44,7 @@ const MobileNav = () => {
               <div
                 onClick={() => {
                   setFeature(item.route);
+                  setOpen(false);
                 }}
                 key={item.label}
                 className={cn(
