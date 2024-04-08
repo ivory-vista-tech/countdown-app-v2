@@ -42,10 +42,12 @@ interface DataContextType {
   setIsFullscreen: React.Dispatch<React.SetStateAction<boolean>>;
   timeItems: TimeItems;
   setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
+  activeStep: number;
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const initialContext: DataContextType = {
-  feature: "countdown",
+  feature: "home",
   setFeature: () => {},
   showAlert: false,
   setShowAlert: () => {},
@@ -59,6 +61,9 @@ const initialContext: DataContextType = {
   setIsVisible: () => {},
   isFullscreen: false,
   setIsFullscreen: () => {},
+  activeStep: 0,
+  setActiveStep: () => {},
+
   timeItems: {
     hours: 0,
     minutes: 0,
@@ -81,13 +86,14 @@ interface DataProviderProps {
 }
 
 const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-  const [feature, setFeature] = useState("countdown");
+  const [feature, setFeature] = useState("home");
   const [showAlert, setShowAlert] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [activeStep, setActiveStep] = React.useState(0);
   const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useLocalStorage({
     key: "twentyFourHoursFormat",
     defaultValue: JSON.stringify(true),
@@ -216,6 +222,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         setMessage,
         isVisible,
         setIsVisible,
+        activeStep,
+        setActiveStep,
         isFullscreen,
         setIsFullscreen,
         twentyFourHoursFormat,

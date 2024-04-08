@@ -10,25 +10,25 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   const { isFullscreen } = useContext(DataContext);
 
   return (
-    <main className="max-w-screen w-screen h-screen max-h-screen">
+    <main>
       {!isFullscreen && (
-        <>
+        <div className="xl:h-screen flex flex-col">
           <Navbar />
 
-          <div className="flex w-screen">
+          <div className="flex flex-1 h-full w-full">
             <Sidebar />
 
-            <section className="flex flex-1 flex-col p-7 md:p-14  justify-center items-center">
+            <section className="flex flex-1 flex-col p-7 justify-center items-center">
               <div className="w-full max-w-[1440px] h-full min-h-full">
                 {children}
               </div>
             </section>
           </div>
-        </>
+        </div>
       )}
 
       {isFullscreen && (
-        <div className="w-full min-w-full h-full min-h-full bg-white dark:bg-dark-2 flex flex-col justify-center">
+        <div className="h-screen flex flex-col w-full min-w-full bg-white dark:bg-dark-2 justify-center">
           {children}
         </div>
       )}

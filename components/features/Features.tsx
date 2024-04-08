@@ -1,11 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { features, getIcon } from "../constants";
-import { useRouter } from "next/navigation";
+import { DataContext } from "@/providers/DataProvider";
 
 const Features = () => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const router = useRouter();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -37,19 +36,13 @@ const Features = () => {
               )}
             </AnimatePresence>
 
-            <div
-              className={`flex flex-col justify-between  min-h-[230px] backdrop-blur-lg p-6 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 rounded-lg cursor-pointer ${className}`}
-              onClick={() => router.push(`/${link}`)}
-            >
-              <div className="flex justify-center items-center glassmorphism size-12 rounded-lg">
-                {getIcon(icon, className.replace("bg", "text"))}
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <h1 className="text-2xl font-bold">{title}</h1>
-                <p className="font-normal">{description}</p>
-              </div>
-            </div>
+            <FeatureCard
+              link={link}
+              className={className}
+              icon={icon}
+              description={description}
+              title={title}
+            />
           </div>
         );
       })}
@@ -58,3 +51,35 @@ const Features = () => {
 };
 
 export default Features;
+
+export const FeatureCard = ({
+  link,
+  className,
+  icon,
+  description,
+  title,
+}: {
+  link: string;
+  className: string;
+  icon: string;
+  description: string;
+  title: string;
+}) => {
+  const { setFeature } = useContext(DataContext);
+
+  return (
+    <div
+      className={`flex flex-col max-lg:gap-2 justify-between h-[180px] lg:h-[230px] backdrop-blur-lg p-4 lg:p-6 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 rounded-lg cursor-pointer ${className}`}
+      onClick={() => setFeature(link)}
+    >
+      <div className="flex justify-center items-center glassmorphism size-12 rounded-lg">
+        {getIcon(icon, className.replace("bg", "text"))}
+      </div>
+
+      <div className="flex flex-col lg:gap-2">
+        <h1 className="text-xl fontlg:text-2xl font-bold">{title}</h1>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};

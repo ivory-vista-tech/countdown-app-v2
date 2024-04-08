@@ -1,7 +1,6 @@
 "use client";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Link from "next/link";
 import { getIcon, sidebarLinks } from "../constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -12,7 +11,7 @@ import { DataContext } from "@/providers/DataProvider";
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const { isFullscreen } = useContext(DataContext);
+  const { isFullscreen, setFeature, feature } = useContext(DataContext);
 
   return (
     <Sheet>
@@ -20,7 +19,7 @@ const MobileNav = () => {
         <Menu
           className={cn({
             "sm:hidden ml-4": !isFullscreen,
-            "icon max-sm:hidden": isFullscreen,
+            icon: isFullscreen,
           })}
         />
       </SheetTrigger>
@@ -40,23 +39,27 @@ const MobileNav = () => {
           </div>
 
           {sidebarLinks.map((item) => {
-            const isActive =
-              pathname === item.route || pathname.startsWith(`${item.route}/`);
+            const isActive = feature === item.route;
 
             return (
-              <Link
-                href={item.route}
+              <div
+                onClick={() => {
+                  setFeature(item.route);
+                }}
                 key={item.label}
-                className={cn("flex gap-4 items-center p-2  justify-start", {
-                  "bg-primary overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
-                    isActive,
-                })}
+                className={cn(
+                  "flex gap-4 items-center p-2  justify-start cursor-pointer",
+                  {
+                    "bg-primary overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
+                      isActive,
+                  }
+                )}
               >
                 <div className="flex gap-4 items-center px-8 py-2 rounded-lg justify-start">
                   {getIcon(item.imgURL)}
                   <p className="text font-medium ">{item.label}</p>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

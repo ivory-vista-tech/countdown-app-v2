@@ -1,25 +1,24 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { getIcon, sidebarLinks } from "../constants";
+import { useContext } from "react";
+import { DataContext } from "@/providers/DataProvider";
 
 const Sidebar = () => {
-  const pathname = usePathname();
+  const { setFeature, feature } = useContext(DataContext);
 
   return (
-    <section className="sticky left-0 top-0 flex h-[calc(100vh-67px)] w-fit flex-col justify-between text-white bg-dark-1  pt-28  max-sm:hidden lg:w-[264px] opacity-75 backdrop-blur-lg border-x">
+    <section className="sticky left-0 top-0 flex flex-col justify-between text-white bg-dark-1  pt-28  max-sm:hidden lg:w-[264px] opacity-75 backdrop-blur-lg border-x">
       <div className="flex flex-1 flex-col gap-6">
         {sidebarLinks.map((item) => {
-          const isActive =
-            pathname === item.route || pathname.startsWith(`${item.route}/`);
+          const isActive = feature === item.route;
 
           return (
-            <Link
-              href={item.route}
+            <div
+              onClick={() => setFeature(item.route)}
               key={item.label}
-              className={cn({
+              className={cn("cursor-pointer", {
                 "bg-primary overflow-hidden border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700":
                   isActive,
                 "text-white": isActive,
@@ -31,7 +30,7 @@ const Sidebar = () => {
                   {item.label}
                 </p>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>

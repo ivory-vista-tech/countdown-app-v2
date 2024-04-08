@@ -1,6 +1,5 @@
 "use client";
 
-import { Add } from "@mui/icons-material";
 import React, { useContext, useEffect, useState } from "react";
 import ScheduleModal from "@/components/schedule/ScheduleModal";
 import CountDown from "@/components/countdown/CountDown";
@@ -40,17 +39,6 @@ const AutoPilotPage = () => {
         ))}
 
       {!showAlert && <CountDown />}
-
-      {/* {!showAlert && (
-        <div className="flex justify-end">
-          <div
-            className="flex justify-center size-14 bg-primary rounded-full items-center shadow-md cursor-pointer"
-            onClick={() => setSchedule(true)}
-          >
-            <Add />
-          </div>
-        </div>
-      )} */}
 
       <ScheduleModal
         isOpen={schedule}

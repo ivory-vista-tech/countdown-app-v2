@@ -41,27 +41,27 @@ export const getIcon = (name: string, className?: string) => {
 export const sidebarLinks = [
   {
     imgURL: "Home",
-    route: "/",
+    route: "home",
     label: "Home",
   },
   {
     imgURL: "AutoAwesome",
-    route: "/auto-pilot",
+    route: "auto-pilot",
     label: "Auto Pilot",
   },
   {
     imgURL: "HourglassTop",
-    route: "/countdown",
+    route: "countdown",
     label: "Countdown",
   },
   {
     imgURL: "AccessTime",
-    route: "/time",
+    route: "time",
     label: "Time",
   },
   {
     imgURL: "StickyNote2",
-    route: "/message",
+    route: "message",
     label: "Message",
   },
 ];

@@ -6,6 +6,7 @@ import { getFormattedTime } from "@/utils/functions";
 import PresetBlock from "../editCountdown/PresetBlock";
 import EditCountDown from "../editCountdown/EditCountDown";
 import { cn } from "@/lib/utils";
+import ScheduleStepper from "../stepper/ScheduleStepper";
 
 const Timer = () => {
   const { timeItems, isPlaying, isVisible, editMode, feature } =
@@ -35,6 +36,8 @@ const Timer = () => {
       ) : (
         <div className="h-[100px]" />
       )}
+
+      {feature === "auto-pilot" && <ScheduleStepper queueSize={5} />}
     </div>
   );
 };
