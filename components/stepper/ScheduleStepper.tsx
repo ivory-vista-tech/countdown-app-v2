@@ -22,7 +22,10 @@ const ScheduleStepper = ({ queueSize }: ScheduleStepperProps) => {
 
   return (
     <div className="w-full h-[100px]">
-      <Stepper activeStep={activeStep}>
+      <Stepper
+        activeStep={activeStep}
+        className="mx-[4px] md:mx-[40px] lg:mx-[100px]"
+      >
         {items.map((_, index) => {
           const stepProps: { completed?: boolean } = {};
 
@@ -31,8 +34,16 @@ const ScheduleStepper = ({ queueSize }: ScheduleStepperProps) => {
           } = {};
 
           return (
-            <Step key={index} {...stepProps}>
-              <StepLabel {...labelProps} />
+            <Step
+              key={index}
+              {...stepProps}
+              className="h-[60px] flex justify-center items-center"
+            >
+              <StepLabel
+                {...labelProps}
+                onClick={() => setActiveStep(index)}
+                className="cursor-pointer"
+              />
             </Step>
           );
         })}

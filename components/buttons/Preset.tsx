@@ -49,12 +49,15 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
   return (
     <div
       onClick={handleClick}
-      className={cn("cursor-pointer", {
-        "text-primary": isEqualTimeItems,
-        "text-gray-500": !isEqualTimeItems,
-      })}
+      className={cn(
+        "cursor-pointer h-[40px] flex justify-center items-center px-4",
+        {
+          "bg-primary rounded-3xl": isEqualTimeItems,
+          "text-gray-500": !isEqualTimeItems,
+        }
+      )}
     >
-      <h1 className="text-[20px] md:text-[30px]">{presetTime}</h1>
+      <h1 className="md:text-2xl">{presetTime}</h1>
     </div>
   );
 };

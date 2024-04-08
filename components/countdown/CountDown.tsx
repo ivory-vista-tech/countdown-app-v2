@@ -31,15 +31,31 @@ const Timer = () => {
         {currentTime}
       </h1>
 
-      {isVisible && !isPlaying && feature !== "auto-pilot" ? (
-        <PresetBlock />
-      ) : (
-        <div className="h-[100px]" />
-      )}
-
-      {/* {feature === "auto-pilot" && <ScheduleStepper queueSize={5} />} */}
+      <BottomBlock
+        isPlaying={isPlaying}
+        isVisible={isVisible}
+        feature={feature}
+      />
     </div>
   );
 };
 
 export default Timer;
+
+export const BottomBlock = ({
+  isVisible,
+  isPlaying,
+  feature,
+}: {
+  isVisible: boolean;
+  isPlaying: boolean;
+  feature: string;
+}) => {
+  if (isVisible && !isPlaying && feature === "countdown") {
+    return <PresetBlock />;
+  } else if (isVisible && feature === "auto-pilot") {
+    return <ScheduleStepper queueSize={5} />;
+  } else {
+    return <div className="h-[100px]" />;
+  }
+};
