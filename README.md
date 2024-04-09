@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Aeon Timer
 
-## Getting Started
+Aeon Timer is a countdown Next.js application hosted at [https://aeon-timer-v2.netlify.app/](https://aeon-timer-v2.netlify.app/). It provides users with a versatile countdown feature along with additional functionalities like time, messages, and an auto-countdown feature.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Countdown Feature
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Users can set a countdown timer to track the time until a specific event or deadline.
+- The countdown timer displays the remaining time in days, hours, minutes, and seconds.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Time
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Aeon Timer provides users with the current time, helping them stay organized and aware of the current time.
 
-## Learn More
+### Message
 
-To learn more about Next.js, take a look at the following resources:
+- Users can add personalized messages or notes to accompany the countdown, enhancing the user experience and adding context to the event.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Auto Countdown
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- A unique feature of Aeon Timer is the auto-countdown feature.
+- Users can schedule durations for different aspects of an event or process.
+- The timer seamlessly transitions from one scheduled duration to another automatically.
+- This feature is particularly useful for managing events with multiple phases or activities.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Visit [https://aeon-timer-v2.netlify.app/](https://aeon-timer-v2.netlify.app/) in your web browser.
+2. Set the countdown timer by specifying the target date and time of your event.
+3. Optionally, add a personalized message to accompany the countdown.
+4. Enable the auto-countdown feature by specifying the durations for different aspects of your event, if applicable.
+5. Sit back and let Aeon Timer keep track of your countdown or scheduled durations automatically.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies Used
+
+- **Next.js 14**: A React framework for building server-side rendered applications.
+- **Tailwind CSS**: A utility-first CSS framework for quickly styling web applications.
+- **Netlify**: Hosting platform used to deploy the Aeon Timer application.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, feature requests, or bug reports, please feel free to open an issue or submit a pull request on the GitHub repository.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
