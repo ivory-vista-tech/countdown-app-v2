@@ -154,7 +154,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
     if (
       timeItems.totalMilliseconds === 1000 &&
-      timeItems.workQueue.length > 0
+      timeItems.workQueue?.length > 0
     ) {
       setIsBreakTime(true);
     }
@@ -188,7 +188,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
     let autoStartNextSession: string | number | NodeJS.Timeout | undefined;
 
-    if (timeItems.workQueue.length === timeItems.stepperQueue.length) {
+    if (timeItems.workQueue?.length === timeItems.stepperQueue?.length) {
       if (isPlaying && timeItems.autoMode && timeItems.workQueue.length > 0) {
         processWorkQueue(timeItems.workQueue);
       }

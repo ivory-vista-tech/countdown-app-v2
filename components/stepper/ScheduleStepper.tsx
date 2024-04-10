@@ -12,10 +12,10 @@ const ScheduleStepper = ({ queue }: ScheduleStepperProps) => {
   const { activeStep } = React.useContext(DataContext);
 
   return (
-    <div className="w-full h-[100px]">
+    <div className="w-full h-[100px] max-w-[1440px]">
       <Stepper
         activeStep={activeStep}
-        className="mx-[4px] md:mx-[40px] lg:mx-[100px] flex flex-wrap"
+        className="mx-[4px] md:mx-[40px] lg:mx-[100px] "
       >
         {queue.map((item, index) => {
           const stepProps: { completed?: boolean } = {};
@@ -31,7 +31,9 @@ const ScheduleStepper = ({ queue }: ScheduleStepperProps) => {
               className="h-[60px] flex justify-center items-center"
             >
               <StepLabel {...labelProps}>
-                <span className="text-white italic">{`${item} min(s)`}</span>
+                <span className="text-white italic">{`${item} ${
+                  item === 1 ? "min" : "mins"
+                }`}</span>
               </StepLabel>
             </Step>
           );

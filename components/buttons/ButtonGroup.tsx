@@ -12,13 +12,19 @@ const ButtonGroup = () => {
 
   return (
     <div className="flex gap-4">
-      {feature === "countdown" ||
-        (feature === "auto-pilot" && (
-          <>
-            <PlayAndPause />
-            <Reset />
-          </>
-        ))}
+      {feature === "countdown" && (
+        <>
+          <PlayAndPause />
+          <Reset />
+        </>
+      )}
+
+      {feature === "auto-pilot" && (
+        <>
+          <PlayAndPause />
+          <Reset />
+        </>
+      )}
       <FullScreen />
 
       {isFullscreen && <MobileNav />}

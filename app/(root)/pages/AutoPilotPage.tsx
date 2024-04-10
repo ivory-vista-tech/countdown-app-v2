@@ -27,7 +27,9 @@ const AutoPilotPage = () => {
 
       <Alert displayTimeMilliseconds={120000} />
 
-      {isBreakTime && <Signal message="Session Over!" closeButton={false} />}
+      {isBreakTime && (
+        <Signal message="Session Over!" closeButton={false} skipButton />
+      )}
 
       {!timeItems.autoMode && <TimeUp />}
 

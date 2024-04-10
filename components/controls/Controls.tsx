@@ -16,15 +16,19 @@ const Controls = ({ setSchedule }: SetScheduleProps) => {
   const { feature } = useContext(DataContext);
 
   return (
-    <div className="flex gap-4 justify-center items-center max-w-screen mx-[4px] md:mx-[40px] lg:mx-[100px] h-[100px] ">
-      <div className="flex-1">
-        {feature === "countdown" && <SetCountdown />}
-        {feature === "auto-pilot" && <SetSchedule handleClick={setSchedule} />}
-        {feature === "message" && <SetMessage />}
-        {feature === "time" && <ToggleTimeFormat />}
-      </div>
+    <div className="flex justify-center w-full min-w-full">
+      <div className="flex gap-4 justify-center items-center w-full max-w-[1440px] h-[100px] mx-[4px] md:mx-[40px] lg:mx-[100px]">
+        <div className="flex-1">
+          {feature === "countdown" && <SetCountdown />}
+          {feature === "auto-pilot" && (
+            <SetSchedule handleClick={setSchedule} />
+          )}
+          {feature === "message" && <SetMessage />}
+          {feature === "time" && <ToggleTimeFormat />}
+        </div>
 
-      <ButtonGroup />
+        <ButtonGroup />
+      </div>
     </div>
   );
 };

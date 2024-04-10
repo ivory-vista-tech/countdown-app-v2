@@ -51,7 +51,7 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
   const showToast = () => {
     toast({
       title: "Created successfully",
-      description: "Click Play button to start!",
+      description: "Click the Play button to start!",
     });
   };
 
