@@ -69,11 +69,14 @@ export const FeatureCard = ({
 
   return (
     <div
-      className={`flex flex-col max-lg:gap-2 justify-between h-[180px] lg:h-[230px] backdrop-blur-lg p-4 lg:p-6 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 rounded-lg cursor-pointer ${className}`}
+      className={`flex flex-col max-lg:gap-2 justify-between h-[160px] lg:h-[230px] backdrop-blur-lg p-4 lg:p-6 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 rounded-lg cursor-pointer ${className}`}
       onClick={() => setFeature(link)}
     >
-      <div className="flex justify-center items-center glassmorphism size-12 rounded-lg">
-        {getIcon(icon, className.replace("bg", "text"))}
+      <div className="flex justify-center items-center glassmorphism size-9 lg:size-12 rounded-lg">
+        {getIcon(
+          icon,
+          `text-[20px] lg:text-[25px] ${className.replace("bg", "text")}`
+        )}
       </div>
 
       <div className="flex flex-col lg:gap-2">
