@@ -15,6 +15,9 @@ const Reset = () => {
     setTimeItems((prevState) => ({
       ...prevState,
       totalMilliseconds: getMilliseconds(timeItems),
+      autoMode: false,
+      workQueue: [],
+      stepperQueue: [],
     }));
   };
 

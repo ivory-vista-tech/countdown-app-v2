@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DataContext } from "@/providers/DataProvider";
 import HomePage from "./pages/HomePage";
 import AutoPilotPage from "./pages/AutoPilotPage";

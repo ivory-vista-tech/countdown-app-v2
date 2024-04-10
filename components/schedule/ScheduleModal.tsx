@@ -50,26 +50,42 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
 
   const showToast = () => {
     toast({
-      title: "Success",
-      description: "Event created!",
+      title: "Created successfully",
+      description: "Click Play button to start!",
     });
   };
 
   const onSubmit = async (values: FormValues) => {
-    const converted = values?.sessions.map(({ duration }) =>
-      getMilliseconds({ hours: 0, minutes: Number(duration), seconds: 0 })
+    const { sessions } = values || {};
+    if (!sessions) return;
+
+    const { converted, queue } = sessions.reduce(
+      (acc, { duration }) => {
+        const durationNumber = Number(duration);
+        const milliseconds = getMilliseconds({
+          hours: 0,
+          minutes: durationNumber,
+          seconds: 0,
+        });
+
+        acc.converted.push(milliseconds);
+        acc.queue.push(durationNumber);
+
+        return acc;
+      },
+      { converted: [] as number[], queue: [] as number[] }
     );
 
     setTimeItems({
       ...timeItems,
       autoMode: true,
-      workQueue: [...converted],
+      totalMilliseconds: converted[0],
+      workQueue: converted,
+      stepperQueue: queue,
     });
 
     showToast();
-
     reset();
-
     onClose();
   };
 

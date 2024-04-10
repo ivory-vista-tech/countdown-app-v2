@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import ScheduleStepper from "../stepper/ScheduleStepper";
 
 const Timer = () => {
-  const { timeItems, isPlaying, isVisible, editMode, feature } =
+  const { timeItems, isPlaying, isVisible, editMode, feature, showAlert } =
     useContext(DataContext);
 
   const currentTime = getFormattedTime(timeItems.totalMilliseconds);
@@ -35,6 +35,8 @@ const Timer = () => {
         isPlaying={isPlaying}
         isVisible={isVisible}
         feature={feature}
+        showAlert={showAlert}
+        stepperQueue={timeItems.stepperQueue || []}
       />
     </div>
   );
@@ -46,15 +48,19 @@ export const BottomBlock = ({
   isVisible,
   isPlaying,
   feature,
+  showAlert,
+  stepperQueue,
 }: {
   isVisible: boolean;
   isPlaying: boolean;
   feature: string;
+  showAlert: boolean;
+  stepperQueue: number[];
 }) => {
   if (isVisible && !isPlaying && feature === "countdown") {
     return <PresetBlock />;
-  } else if (isVisible && feature === "auto-pilot") {
-    return <ScheduleStepper queueSize={5} />;
+  } else if (isVisible && !showAlert && feature === "auto-pilot") {
+    return <ScheduleStepper queue={stepperQueue} />;
   } else {
     return <div className="h-[100px]" />;
   }

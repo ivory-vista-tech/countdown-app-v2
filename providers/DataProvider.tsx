@@ -14,6 +14,7 @@ interface TimeItems {
   totalMilliseconds: number;
   autoMode?: boolean;
   workQueue?: number[];
+  stepperQueue?: number[];
 }
 
 interface MessageItems {
@@ -71,6 +72,7 @@ const initialContext: DataContextType = {
     totalMilliseconds: 0,
     autoMode: false,
     workQueue: [],
+    stepperQueue: [],
   },
   message: { message: "", tempMessage: "" },
   setMessage: () => {},
@@ -114,6 +116,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       totalMilliseconds: 600000,
       autoMode: false,
       workQueue: [],
+      stepperQueue: [],
     }),
   });
 
@@ -168,6 +171,10 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
         setIsPlaying(true);
 
+        if (queue.length !== timeItems.stepperQueue.length) {
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        }
+
         setTimeItems((prevTimeItems: any) => ({
           ...prevTimeItems,
           totalMilliseconds: queue[0],
@@ -179,13 +186,25 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       }
     };
 
-    const autoStartNextSession = setTimeout(() => {
-      setIsBreakTime(false);
+    let autoStartNextSession: string | number | NodeJS.Timeout | undefined;
 
-      if (!isPlaying && timeItems.autoMode && timeItems.workQueue.length > 0) {
+    if (timeItems.workQueue.length === timeItems.stepperQueue.length) {
+      if (isPlaying && timeItems.autoMode && timeItems.workQueue.length > 0) {
         processWorkQueue(timeItems.workQueue);
       }
-    }, 5000);
+    } else {
+      autoStartNextSession = setTimeout(() => {
+        setIsBreakTime(false);
+
+        if (
+          !isPlaying &&
+          timeItems.autoMode &&
+          timeItems.workQueue.length > 0
+        ) {
+          processWorkQueue(timeItems.workQueue);
+        }
+      }, 5000);
+    }
 
     return () => {
       clearTimeout(autoStartNextSession);

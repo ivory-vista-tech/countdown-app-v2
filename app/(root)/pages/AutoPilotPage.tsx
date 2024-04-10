@@ -27,18 +27,19 @@ const AutoPilotPage = () => {
 
       <Alert displayTimeMilliseconds={120000} />
 
-      {isBreakTime && <Signal message="Break Time" closeButton={false} />}
+      {isBreakTime && <Signal message="Session Over!" closeButton={false} />}
 
       {!timeItems.autoMode && <TimeUp />}
 
       {!showAlert &&
+        timeItems.totalMilliseconds !== 1000 &&
         (isVisible ? (
           <Controls setSchedule={setSchedule} />
         ) : (
           <div className="h-[100px]" />
         ))}
 
-      {!showAlert && (
+      {!showAlert && timeItems.totalMilliseconds !== 1000 && (
         <div className="flex-1">
           <CountDown />
         </div>
