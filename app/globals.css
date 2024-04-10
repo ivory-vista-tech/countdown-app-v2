@@ -65,7 +65,7 @@
   }
 
   .timer-button {
-    @apply bg-blue-1 border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white;
+    @apply bg-blue-1 border-y border-transparent dark:border-white/[0.2] group-hover:border-slate-700 p-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 text-white text-xs lg:text-sm;
   }
 
   .glassmorphism {
