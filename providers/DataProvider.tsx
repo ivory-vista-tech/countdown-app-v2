@@ -64,7 +64,6 @@ const initialContext: DataContextType = {
   setIsFullscreen: () => {},
   activeStep: 0,
   setActiveStep: () => {},
-
   timeItems: {
     hours: 0,
     minutes: 0,
@@ -74,20 +73,16 @@ const initialContext: DataContextType = {
     workQueue: [],
     stepperQueue: [],
   },
+  setTimeItems: () => {},
   message: { message: "", tempMessage: "" },
   setMessage: () => {},
-  setTimeItems: () => {},
   twentyFourHoursFormat: true,
   setTwentyFourHoursFormat: () => {},
 };
 
 export const DataContext = createContext(initialContext);
 
-interface DataProviderProps {
-  children: ReactNode;
-}
-
-const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+const DataProvider = ({ children }: { children: ReactNode }) => {
   const [feature, setFeature] = useState("home");
   const [showAlert, setShowAlert] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -143,28 +138,6 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
 
-    if (isPlaying && timeItems.totalMilliseconds > 0) {
-      timeoutId = setTimeout(() => {
-        setTimeItems((prevTimeItems: { totalMilliseconds: number }) => ({
-          ...prevTimeItems,
-          totalMilliseconds: prevTimeItems.totalMilliseconds - ONE_SECOND,
-        }));
-      }, 975);
-    }
-
-    if (
-      timeItems.totalMilliseconds === 1000 &&
-      timeItems.workQueue?.length > 0
-    ) {
-      setIsBreakTime(true);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [isPlaying, timeItems, setTimeItems]);
-
-  useEffect(() => {
     const processWorkQueue = (queue: number[]) => {
       if (queue.length > 0) {
         setShowAlert(false);
@@ -186,14 +159,28 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       }
     };
 
-    let autoStartNextSession: string | number | NodeJS.Timeout | undefined;
+    if (isPlaying && timeItems.totalMilliseconds > 0) {
+      timeoutId = setTimeout(() => {
+        setTimeItems((prevTimeItems: { totalMilliseconds: number }) => ({
+          ...prevTimeItems,
+          totalMilliseconds: prevTimeItems.totalMilliseconds - ONE_SECOND,
+        }));
+      }, 975);
+    }
+
+    if (
+      timeItems.totalMilliseconds === 1000 &&
+      timeItems.workQueue?.length > 0
+    ) {
+      setIsBreakTime(true);
+    }
 
     if (timeItems.workQueue?.length === timeItems.stepperQueue?.length) {
       if (isPlaying && timeItems.autoMode && timeItems.workQueue.length > 0) {
         processWorkQueue(timeItems.workQueue);
       }
     } else {
-      autoStartNextSession = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIsBreakTime(false);
 
         if (
@@ -207,7 +194,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     }
 
     return () => {
-      clearTimeout(autoStartNextSession);
+      clearTimeout(timeoutId);
     };
   }, [isPlaying, timeItems, setTimeItems]);
 

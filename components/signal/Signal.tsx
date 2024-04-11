@@ -65,7 +65,7 @@ const Signal = ({
 
       {skipButton && (
         <Button className=" text-white text-xs lg:text-lg py-4 lg:py-6 px-6 lg:px-10">
-          Skip Now! <span className="pl-4">{timeLeft}</span>
+          Skip Now! <span className="pl-4">{`(${timeLeft})`}</span>
         </Button>
       )}
     </div>

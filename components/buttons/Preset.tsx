@@ -18,7 +18,10 @@ interface PresetProps {
 }
 
 const Preset: React.FC<PresetProps> = ({ presetTime }) => {
-  const { setTimeItems, timeItems } = useContext(DataContext);
+  const {
+    setTimeItems,
+    timeItems: { autoMode, workQueue, stepperQueue, ...stateDataObject },
+  } = useContext(DataContext);
 
   const parseTime = (timeString: string) => {
     const [hours, minutes, seconds] = timeString.split(":");
@@ -44,7 +47,7 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
     setTimeItems(newTimeItem);
   };
 
-  const isEqualTimeItems = isEqual(timeItems, newTimeItem);
+  const isEqualTimeItems = isEqual(stateDataObject, newTimeItem);
 
   return (
     <div

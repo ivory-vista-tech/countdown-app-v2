@@ -22,7 +22,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-dark-1 opacity-90 border p-2 rounded-lg">
+        <div>
           <Features />
         </div>
 

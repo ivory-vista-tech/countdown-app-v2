@@ -8,13 +8,15 @@ const BrandIcon = () => {
   const { setFeature } = useContext(DataContext);
 
   return (
-    <div
-      className="flex flex-row items-center font-normal text-2xl text-white cursor-pointer"
-      onClick={() => setFeature("home")}
-    >
-      <Image src="/logo512.png" alt="Logo" height={50} width={50} priority />
-      Aeon<span className="text-primary">Timer</span>
-    </div>
+    <section>
+      <div
+        className="flex flex-row items-center font-normal text-xl text-white cursor-pointer w-fit"
+        onClick={() => setFeature("home")}
+      >
+        <Image src="/logo512.png" alt="Logo" height={40} width={40} priority />
+        Aeon<span className="text-primary">Timer</span>
+      </div>
+    </section>
   );
 };
 
