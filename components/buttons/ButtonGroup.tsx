@@ -8,13 +8,20 @@ import FullScreen from "./FullScreen";
 import MobileNav from "../nav/MobileNav";
 
 const ButtonGroup = () => {
-  const { feature, isFullscreen } = useContext(DataContext);
+  const { feature, isFullscreen, isPlaying } = useContext(DataContext);
 
   return (
     <div className="flex gap-4">
-      {(feature === "countdown" || feature === "auto-pilot") && (
+      {feature === "countdown" && (
         <>
           <PlayAndPause />
+          <Reset />
+        </>
+      )}
+
+      {feature === "auto-pilot" && (
+        <>
+          {!isPlaying && <PlayAndPause />}
           <Reset />
         </>
       )}
