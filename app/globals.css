@@ -75,15 +75,15 @@
   }
 
   .size-hour-included {
-    @apply font-Roboto_Slab text-[60px] sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px] text-gray-800 dark:text-white;
+    @apply text-[60px] sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px] text-gray-800 dark:text-white;
   }
 
   .size-hour-excluded {
-    @apply font-Roboto_Slab text-[80px] sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px] text-gray-800 dark:text-white;
+    @apply text-[80px] sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px] text-gray-800 dark:text-white;
   }
 
   .size-AmPm-included {
-    @apply font-Roboto_Slab text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
+    @apply text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
   }
 
   .size-message {

@@ -115,7 +115,7 @@ const config = {
         flash: "blink 4s infinite",
       },
       backgroundImage: {
-        hero: "url('/hero.jpeg')",
+        hero: "url('/hero-2.jpeg')",
       },
     },
   },
