@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aeon Timer",
+  title: "Aeon Timer v2",
   description:
     "This is Aeon Timer Application for effective event time management",
 };

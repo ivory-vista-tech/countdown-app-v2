@@ -20,7 +20,7 @@ interface PresetProps {
 const Preset: React.FC<PresetProps> = ({ presetTime }) => {
   const {
     setTimeItems,
-    timeItems: { autoMode, workQueue, stepperQueue, ...stateDataObject },
+    timeItems: { hours, minutes, seconds, totalMilliseconds },
   } = useContext(DataContext);
 
   const parseTime = (timeString: string) => {
@@ -47,7 +47,10 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
     setTimeItems(newTimeItem);
   };
 
-  const isEqualTimeItems = isEqual(stateDataObject, newTimeItem);
+  const isEqualTimeItems = isEqual(
+    { hours, minutes, seconds, totalMilliseconds },
+    newTimeItem
+  );
 
   return (
     <div

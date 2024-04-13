@@ -196,7 +196,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isPlaying, timeItems, setTimeItems]);
+  }, [isPlaying, timeItems, setTimeItems, isBreakTime]);
 
   if (timeItems.totalMilliseconds === 0) {
     setShowAlert(true);
