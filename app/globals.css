@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Slab:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,7 +79,7 @@
   }
 
   .size-hour-excluded {
-    @apply text-[80px] sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px] text-gray-800 dark:text-white;
+    @apply font-Roboto_Slab text-[80px] sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px] text-gray-800 dark:text-white;
   }
 
   .size-AmPm-included {

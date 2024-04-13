@@ -10,6 +10,9 @@ const config = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      Roboto_Slab: ["Roboto Slab", "serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
