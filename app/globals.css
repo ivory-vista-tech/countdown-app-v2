@@ -75,7 +75,7 @@
   }
 
   .size-hour-included {
-    @apply text-[60px] sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px] text-gray-800 dark:text-white;
+    @apply font-Roboto_Slab text-[60px] sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px] text-gray-800 dark:text-white;
   }
 
   .size-hour-excluded {
@@ -83,7 +83,7 @@
   }
 
   .size-AmPm-included {
-    @apply text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
+    @apply font-Roboto_Slab text-[50px] sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
   }
 
   .size-message {
