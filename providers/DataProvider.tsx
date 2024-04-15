@@ -27,6 +27,8 @@ interface DataContextType {
   setFeature: React.Dispatch<React.SetStateAction<string>>;
   showAlert: boolean;
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  showTimeUp: boolean;
+  setShowTimeUp: React.Dispatch<React.SetStateAction<boolean>>;
   editMode: boolean;
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   isPlaying: boolean;
@@ -52,6 +54,8 @@ const initialContext: DataContextType = {
   setFeature: () => {},
   showAlert: false,
   setShowAlert: () => {},
+  showTimeUp: false,
+  setShowTimeUp: () => {},
   editMode: false,
   setEditMode: () => {},
   isPlaying: false,
@@ -85,6 +89,7 @@ export const DataContext = createContext(initialContext);
 const DataProvider = ({ children }: { children: ReactNode }) => {
   const [feature, setFeature] = useState("home");
   const [showAlert, setShowAlert] = useState(false);
+  const [showTimeUp, setShowTimeUp] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
@@ -199,7 +204,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
   }, [isPlaying, timeItems, setTimeItems, isBreakTime]);
 
   if (timeItems.totalMilliseconds === 0) {
-    setShowAlert(true);
+    setShowTimeUp(true);
 
     setIsPlaying(false);
 
@@ -216,6 +221,8 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
         setFeature,
         showAlert,
         setShowAlert,
+        showTimeUp,
+        setShowTimeUp,
         editMode,
         setEditMode,
         isPlaying,

@@ -8,7 +8,8 @@ import { DataContext } from "@/providers/DataProvider";
 import { useState, useEffect, useContext } from "react";
 
 const CountDownPage = () => {
-  const { isVisible, setFeature, showAlert } = useContext(DataContext);
+  const { isVisible, setFeature, showAlert, showTimeUp } =
+    useContext(DataContext);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -26,13 +27,14 @@ const CountDownPage = () => {
       <TimeUp />
 
       {!showAlert &&
+        !showTimeUp &&
         (isVisible ? (
           <Controls setSchedule={undefined} />
         ) : (
           <div className="h-[100px]" />
         ))}
 
-      {!showAlert && (
+      {!showAlert && !showTimeUp && (
         <div className="flex-1">
           <CountDown />
         </div>

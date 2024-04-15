@@ -8,7 +8,12 @@ import FullScreen from "./FullScreen";
 import MobileNav from "../nav/MobileNav";
 
 const ButtonGroup = () => {
-  const { feature, isFullscreen, isPlaying } = useContext(DataContext);
+  const {
+    feature,
+    isFullscreen,
+    isPlaying,
+    timeItems: { autoMode },
+  } = useContext(DataContext);
 
   return (
     <div className="flex gap-4">
@@ -21,7 +26,7 @@ const ButtonGroup = () => {
 
       {feature === "auto-pilot" && (
         <>
-          {!isPlaying && <PlayAndPause />}
+          {!isPlaying && autoMode && <PlayAndPause />}
           <Reset />
         </>
       )}

@@ -19,8 +19,14 @@ const Signal = ({
   closeButton = true,
   skipButton = false,
 }: SignalProps) => {
-  const { setShowAlert, setIsPlaying, setActiveStep, setTimeItems, timeItems } =
-    useContext(DataContext);
+  const {
+    setShowAlert,
+    setIsPlaying,
+    setActiveStep,
+    setTimeItems,
+    timeItems,
+    setShowTimeUp,
+  } = useContext(DataContext);
 
   const [timeLeft, setTimeLeft] = useState(5);
 
@@ -28,6 +34,7 @@ const Signal = ({
     setShowAlert(false);
     setIsPlaying(false);
     setActiveStep(0);
+    setShowTimeUp(false);
 
     setTimeItems((prevState) => ({
       ...prevState,

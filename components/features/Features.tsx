@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { features, getIcon } from "../constants";
@@ -7,46 +9,48 @@ const Features = () => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="flex-1 bg-dark-1 opacity-90 border p-2 rounded-lg">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {features.map((feature, idx) => {
-          const { icon, title, description, link, className } = feature;
+    <section>
+      <div className="flex-1 bg-dark-1 opacity-90 border p-2 rounded-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          {features.map((feature, idx) => {
+            const { icon, title, description, link, className } = feature;
 
-          return (
-            <div
-              key={feature?.title}
-              className={`relative group block p-2 h-full w-full`}
-              onMouseEnter={() => setHoveredIndex(idx)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <AnimatePresence>
-                {hoveredIndex === idx && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-lg"
-                    layoutId="hoverBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 0.15 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15, delay: 0.2 },
-                    }}
-                  />
-                )}
-              </AnimatePresence>
+            return (
+              <div
+                key={feature?.title}
+                className={`relative group block p-2 h-full w-full`}
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <AnimatePresence>
+                  {hoveredIndex === idx && (
+                    <motion.span
+                      className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-lg"
+                      layoutId="hoverBackground"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { duration: 0.15 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.15, delay: 0.2 },
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
 
-              <FeatureCard
-                link={link}
-                className={className}
-                icon={icon}
-                description={description}
-                title={title}
-              />
-            </div>
-          );
-        })}
+                <FeatureCard
+                  link={link}
+                  className={className}
+                  icon={icon}
+                  description={description}
+                  title={title}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

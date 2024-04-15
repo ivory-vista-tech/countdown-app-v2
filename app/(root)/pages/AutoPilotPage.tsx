@@ -12,8 +12,14 @@ import Controls from "@/components/controls/Controls";
 const AutoPilotPage = () => {
   const [schedule, setSchedule] = useState<boolean>(false);
   const [isClient, setIsClient] = useState(false);
-  const { setFeature, showAlert, timeItems, isBreakTime, isVisible } =
-    useContext(DataContext);
+  const {
+    setFeature,
+    showAlert,
+    timeItems,
+    isBreakTime,
+    isVisible,
+    showTimeUp,
+  } = useContext(DataContext);
 
   useEffect(() => {
     setIsClient(true);
@@ -34,6 +40,7 @@ const AutoPilotPage = () => {
       {!timeItems.autoMode && <TimeUp />}
 
       {!showAlert &&
+        !showTimeUp &&
         timeItems.totalMilliseconds !== 1000 &&
         (isVisible ? (
           <Controls setSchedule={setSchedule} />
@@ -41,7 +48,7 @@ const AutoPilotPage = () => {
           <div className="h-[100px]" />
         ))}
 
-      {!showAlert && timeItems.totalMilliseconds !== 1000 && (
+      {!showAlert && !showTimeUp && timeItems.totalMilliseconds !== 1000 && (
         <div className="flex-1">
           <CountDown />
         </div>

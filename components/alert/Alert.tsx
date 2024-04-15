@@ -1,7 +1,7 @@
 "use client";
 
 import { DataContext } from "@/providers/DataProvider";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Signal from "../signal/Signal";
 
 interface AlertProp {
@@ -19,27 +19,41 @@ const Alert = ({
     timeItems: { totalMilliseconds },
     isPlaying,
     setShowAlert,
+    showAlert,
   } = useContext(DataContext);
+
+  const [warning, setWarning] = useState(false);
 
   const minutes = displayTimeMilliseconds / 1000 / 60;
   const alertMessage = `You have less than ${minutes} minutes!`;
 
-  const alertShouldShow =
-    isPlaying &&
-    totalMilliseconds >= displayTimeMilliseconds - durationMilliseconds &&
-    totalMilliseconds <= displayTimeMilliseconds;
-
   useEffect(() => {
-    if (alertShouldShow) {
-      setShowAlert(true);
-
-      return () => {
-        setShowAlert(false);
-      };
+    if (
+      isPlaying &&
+      totalMilliseconds >= displayTimeMilliseconds - durationMilliseconds &&
+      totalMilliseconds <= displayTimeMilliseconds
+    ) {
+      setWarning(true);
     }
-  }, [alertShouldShow, setShowAlert]);
 
-  return alertShouldShow ? (
+    if (warning) {
+      setShowAlert(true);
+    }
+
+    return () => {
+      setWarning(false);
+      setShowAlert(false);
+    };
+  }, [
+    isPlaying,
+    setShowAlert,
+    totalMilliseconds,
+    warning,
+    displayTimeMilliseconds,
+    durationMilliseconds,
+  ]);
+
+  return showAlert && warning ? (
     <Signal message={message || alertMessage} closeButton={false} />
   ) : null;
 };

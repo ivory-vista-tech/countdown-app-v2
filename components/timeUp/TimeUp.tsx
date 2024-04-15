@@ -1,25 +1,23 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Signal from "../signal/Signal";
 import { DataContext } from "@/providers/DataProvider";
 
 const TimeUp = () => {
   const {
-    showAlert,
     timeItems: { totalMilliseconds },
+    showTimeUp,
+    setShowTimeUp,
   } = useContext(DataContext);
-  const [showTimeUp, setShowTimeUp] = useState(false);
-
-  const timeUpMessage = "Time's Up";
 
   useEffect(() => {
     if (totalMilliseconds === 1000) {
       setShowTimeUp(true);
     }
-  }, [totalMilliseconds]);
+  }, [setShowTimeUp, totalMilliseconds]);
 
-  return showAlert && showTimeUp ? <Signal message={timeUpMessage} /> : null;
+  return showTimeUp ? <Signal message="Time's Up" /> : null;
 };
 
 export default TimeUp;
