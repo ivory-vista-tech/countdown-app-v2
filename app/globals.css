@@ -87,6 +87,6 @@
   }
 
   .size-message {
-    @apply text-[30px] sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px] text-dark-3 dark:text-white leading-none tracking-tighter;
+    @apply text-[30px] sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px] leading-none tracking-tighter;
   }
 }
