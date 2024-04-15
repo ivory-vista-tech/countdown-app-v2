@@ -56,13 +56,13 @@ const Signal = ({
   }, [timeLeft]);
 
   return (
-    <div className="size-full flex flex-col justify-center items-center gap-10 bg-red-700 animate-flash">
+    <div className="size-full flex flex-col justify-center items-center gap-10 animate-flash">
       {closeButton && (
         <IconButton
           className="absolute right-[2%] top-[7%]"
           onClick={handleClick}
         >
-          <CloseIcon className="text-[40px] md:text-[60px] text-white" />
+          <CloseIcon className="text-[40px] md:text-[60px] animate-flash rounded-full p-2" />
         </IconButton>
       )}
 

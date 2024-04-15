@@ -16,7 +16,7 @@ const MobileNav = () => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <Menu
-          className={cn({
+          className={cn("text-white", {
             "sm:hidden ml-4": !isFullscreen,
             icon: isFullscreen,
           })}
@@ -25,7 +25,7 @@ const MobileNav = () => {
       <SheetContent
         side="left"
         className={cn(
-          "flex w-fit p-0 flex-col justify-between bg-gray-200 dark:bg-[#0D1228] pt-10 text-white backdrop-blur-lg border-x",
+          "flex w-fit p-0 flex-col justify-between pt-10 text-white bg-dark-1 backdrop-blur-lg border-x",
           {
             "sm:hidden": !isFullscreen,
             "w-[264px]": isFullscreen,

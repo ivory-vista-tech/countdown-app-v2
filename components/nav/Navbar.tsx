@@ -7,7 +7,7 @@ import BrandIcon from "./BrandIcon";
 
 const Navbar = () => {
   return (
-    <nav className="w-full relative flex items-center mx-auto px-4 py-8 h-16 bg-dark-1 opacity-75 backdrop-blur-lg border-y">
+    <nav className="w-full relative flex items-center mx-auto px-4 py-8 h-16 bg-dark-1 dark:opacity-75 backdrop-blur-lg border-y">
       <div className="flex-1">
         <BrandIcon />
       </div>
