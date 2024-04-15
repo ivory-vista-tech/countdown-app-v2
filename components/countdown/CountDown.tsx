@@ -59,7 +59,7 @@ export const BottomBlock = ({
 }) => {
   if (isVisible && !isPlaying && feature === "countdown") {
     return <PresetBlock />;
-  } else if (isVisible && !showAlert && feature === "auto-pilot") {
+  } else if (!showAlert && feature === "auto-pilot") {
     return <ScheduleStepper queue={stepperQueue} />;
   } else {
     return <div className="h-[100px]" />;
