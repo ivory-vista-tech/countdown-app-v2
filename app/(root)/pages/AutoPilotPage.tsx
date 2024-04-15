@@ -41,6 +41,7 @@ const AutoPilotPage = () => {
 
       {!showAlert &&
         !showTimeUp &&
+        !isBreakTime &&
         timeItems.totalMilliseconds !== 1000 &&
         (isVisible ? (
           <Controls setSchedule={setSchedule} />
@@ -48,11 +49,14 @@ const AutoPilotPage = () => {
           <div className="h-[100px]" />
         ))}
 
-      {!showAlert && !showTimeUp && timeItems.totalMilliseconds !== 1000 && (
-        <div className="flex-1">
-          <CountDown />
-        </div>
-      )}
+      {!showAlert &&
+        !isBreakTime &&
+        !showTimeUp &&
+        timeItems.totalMilliseconds !== 1000 && (
+          <div className="flex-1">
+            <CountDown />
+          </div>
+        )}
 
       <ScheduleModal
         isOpen={schedule}

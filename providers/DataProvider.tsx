@@ -6,6 +6,7 @@ import { getMilliseconds } from "@/utils/functions";
 
 const TIME_OUT = 10_000;
 const ONE_SECOND = 1_000;
+const WAIT_TIME = 5_000;
 
 interface TimeItems {
   hours: number;
@@ -195,7 +196,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
         ) {
           processWorkQueue(timeItems.workQueue);
         }
-      }, 5000);
+      }, WAIT_TIME);
     }
 
     return () => {
@@ -204,7 +205,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
   }, [isPlaying, timeItems, setTimeItems, isBreakTime]);
 
   if (timeItems.totalMilliseconds === 0) {
-    setShowTimeUp(true);
+    setShowAlert(true);
 
     setIsPlaying(false);
 

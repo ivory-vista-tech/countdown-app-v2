@@ -7,7 +7,8 @@ import { DataContext } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
 
 const Reset = () => {
-  const { setIsPlaying, timeItems, setTimeItems } = useContext(DataContext);
+  const { setIsPlaying, timeItems, setTimeItems, setActiveStep } =
+    useContext(DataContext);
 
   const toggleReset = () => {
     setIsPlaying(false);
@@ -19,6 +20,8 @@ const Reset = () => {
       workQueue: [],
       stepperQueue: [],
     }));
+
+    setActiveStep(0);
   };
 
   return (

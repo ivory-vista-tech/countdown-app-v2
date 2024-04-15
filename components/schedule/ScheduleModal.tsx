@@ -26,7 +26,7 @@ type FormValues = {
 
 const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
   const [isClient, setIsClient] = useState(false);
-  const { timeItems, setTimeItems } = useContext(DataContext);
+  const { timeItems, setTimeItems, setActiveStep } = useContext(DataContext);
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -83,6 +83,8 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
       workQueue: converted,
       stepperQueue: queue,
     });
+
+    setActiveStep(0);
 
     showToast();
     reset();
