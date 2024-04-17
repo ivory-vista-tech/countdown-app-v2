@@ -22,7 +22,7 @@ const MessagePage = () => {
         <div className="h-[100px]" />
       )}
 
-      <div className="flex-1">
+      <div className="flex-1 px-5 xl:px-20">
         <Message />
       </div>
 

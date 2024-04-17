@@ -47,7 +47,9 @@ const Signal = ({
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+      if (timeLeft > 0) {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }
     }, 1000);
 
     return () => {
@@ -56,7 +58,7 @@ const Signal = ({
   }, [timeLeft]);
 
   return (
-    <div className="size-full flex flex-col justify-center items-center gap-10 animate-flash">
+    <div className="size-full flex flex-col justify-center items-center gap-10 animate-flash px-5 xl:px-20">
       {closeButton && (
         <IconButton
           className="absolute right-[2%] top-[7%]"
@@ -71,7 +73,7 @@ const Signal = ({
       </h1>
 
       {skipButton && (
-        <Button className=" text-white text-xs lg:text-lg py-4 lg:py-6 px-6 lg:px-10">
+        <Button className=" text-white text-xs lg:text-lg w-[200px] p-6">
           Skip Now! <span className="pl-4">{`(${timeLeft})`}</span>
         </Button>
       )}

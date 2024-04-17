@@ -179,6 +179,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
       timeItems.workQueue?.length > 0
     ) {
       setIsBreakTime(true);
+      setIsPlaying(false);
     }
 
     if (timeItems.workQueue?.length === timeItems.stepperQueue?.length) {
