@@ -12,7 +12,7 @@ const TimeUp = () => {
   } = useContext(DataContext);
 
   useEffect(() => {
-    if (totalMilliseconds === 1000) {
+    if (totalMilliseconds <= 1000) {
       setShowTimeUp(true);
     }
   }, [setShowTimeUp, totalMilliseconds]);

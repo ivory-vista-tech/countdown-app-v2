@@ -35,7 +35,12 @@ const SetMessage = () => {
         </IconButton>
       )}
 
-      <Button type="submit" onClick={handleConfirm} className={"timer-button"}>
+      <Button
+        type="submit"
+        onClick={handleConfirm}
+        variant="outline"
+        className={"timer-button"}
+      >
         {buttonName.toUpperCase()}
       </Button>
     </>

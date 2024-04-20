@@ -19,7 +19,10 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={inter.className} suppressHydrationWarning={true}>
+        <body
+          className={`${inter.className} bg-white dark:bg-dark-2`}
+          suppressHydrationWarning={true}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

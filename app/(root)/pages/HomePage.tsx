@@ -5,8 +5,8 @@ import Hero from "@/components/hero/Hero";
 
 const HomePage = () => {
   return (
-    <section className="flex justify-center items-start size-full">
-      <div className="flex size-full flex-col gap-[30px] text-white max-w-[1440px]">
+    <section className="flex size-full items-start justify-center">
+      <div className="flex size-full max-w-[1440px] flex-col gap-[30px] text-white">
         <Hero />
 
         <Features />

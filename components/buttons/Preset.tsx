@@ -40,7 +40,7 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
       ...timeObject,
       totalMilliseconds: getMilliseconds(timeObject),
     }),
-    [timeObject]
+    [timeObject],
   );
 
   const handleClick = () => {
@@ -49,21 +49,21 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
 
   const isEqualTimeItems = isEqual(
     { hours, minutes, seconds, totalMilliseconds },
-    newTimeItem
+    newTimeItem,
   );
 
   return (
     <div
       onClick={handleClick}
       className={cn(
-        "cursor-pointer h-[40px] flex justify-center items-center px-4",
+        "flex h-[40px] cursor-pointer items-center justify-center px-6",
         {
-          "bg-primary rounded-3xl": isEqualTimeItems,
+          "rounded-3xl bg-primary": isEqualTimeItems,
           "text-gray-500": !isEqualTimeItems,
-        }
+        },
       )}
     >
-      <h1 className="md:text-2xl">{presetTime}</h1>
+      <h1 className="md:text-xl">{presetTime}</h1>
     </div>
   );
 };

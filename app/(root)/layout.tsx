@@ -12,14 +12,14 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main>
       {!isFullscreen && (
-        <div className="xl:h-screen flex flex-col min-h-screen">
+        <div className="flex min-h-screen flex-col  xl:h-screen">
           <Navbar />
 
-          <div className="flex flex-1 size-full">
+          <div className="flex size-full flex-1">
             <Sidebar />
 
-            <section className="flex flex-1 flex-col p-5 justify-center items-center">
-              <div className="w-full max-w-[1440px] h-full min-h-full">
+            <section className="flex flex-1 flex-col items-center justify-center p-5">
+              <div className="h-full min-h-full w-full max-w-[1440px]">
                 {children}
               </div>
             </section>
@@ -28,7 +28,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       )}
 
       {isFullscreen && (
-        <div className="h-screen flex flex-col w-full min-w-full bg-white dark:bg-dark-2 justify-center">
+        <div className="flex h-screen w-full min-w-full flex-col justify-center ">
           {children}
         </div>
       )}

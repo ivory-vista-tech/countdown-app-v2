@@ -128,8 +128,11 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
       setIsVisible(true);
 
       clearTimeout(timeoutId);
+
       timeoutId = setTimeout(() => {
-        setIsVisible(false);
+        if (isPlaying) {
+          setIsVisible(false);
+        }
       }, TIME_OUT);
     };
 
@@ -139,7 +142,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
       document.removeEventListener("mousemove", handleMouseMove);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [isPlaying]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -175,7 +178,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
     }
 
     if (
-      timeItems.totalMilliseconds === 1000 &&
+      timeItems.totalMilliseconds <= 1000 &&
       timeItems.workQueue?.length > 0
     ) {
       setIsBreakTime(true);
@@ -205,7 +208,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [isPlaying, timeItems, setTimeItems, isBreakTime]);
 
-  if (timeItems.totalMilliseconds === 0) {
+  if (timeItems.totalMilliseconds < 1000) {
     setShowAlert(true);
 
     setIsPlaying(false);

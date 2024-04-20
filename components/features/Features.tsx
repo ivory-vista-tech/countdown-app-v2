@@ -10,7 +10,7 @@ const Features = () => {
 
   return (
     <section>
-      <div className="flex-1 bg-dark-1 opacity-90 border p-2 rounded-lg">
+      <div className="flex-1 rounded-lg border bg-dark-1 p-2 opacity-90">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {features.map((feature, idx) => {
             const { icon, title, description, link, className } = feature;
@@ -18,14 +18,14 @@ const Features = () => {
             return (
               <div
                 key={feature?.title}
-                className={`relative group block p-2 h-full w-full`}
+                className={`group relative block h-full w-full p-2`}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <AnimatePresence>
                   {hoveredIndex === idx && (
                     <motion.span
-                      className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-lg"
+                      className="absolute inset-0 block h-full w-full rounded-lg bg-neutral-200 dark:bg-slate-800/[0.8]"
                       layoutId="hoverBackground"
                       initial={{ opacity: 0 }}
                       animate={{
@@ -75,18 +75,18 @@ export const FeatureCard = ({
 
   return (
     <div
-      className={`flex flex-col max-lg:gap-2 justify-between h-[160px] lg:h-[230px] backdrop-blur-lg p-4 lg:p-6 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 rounded-lg cursor-pointer ${className}`}
+      className={`relative z-20 flex h-[160px] cursor-pointer flex-col justify-between overflow-hidden rounded-lg border border-transparent p-4 backdrop-blur-lg group-hover:border-slate-700 dark:border-white/[0.2] max-lg:gap-2 lg:h-[230px] lg:p-6 ${className}`}
       onClick={() => setFeature(link)}
     >
-      <div className="flex justify-center items-center glassmorphism size-9 lg:size-12 rounded-lg">
+      <div className="glassmorphism flex size-9 items-center justify-center rounded-lg lg:size-12">
         {getIcon(
           icon,
-          `text-[20px] lg:text-[25px] ${className.replace("bg", "text")}`
+          `text-[20px] lg:text-[25px] ${className.replace("bg", "text")}`,
         )}
       </div>
 
       <div className="flex flex-col lg:gap-2">
-        <h1 className="text-xl fontlg:text-2xl font-bold">{title}</h1>
+        <h1 className="fontlg:text-2xl text-xl font-bold">{title}</h1>
         <p>{description}</p>
       </div>
     </div>

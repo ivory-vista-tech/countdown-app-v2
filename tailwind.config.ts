@@ -10,9 +10,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    fontFamily: {
-      Roboto_Slab: ["Roboto Slab", "serif"],
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -62,7 +59,7 @@ const config = {
         },
         dark: {
           1: "#0D1228",
-          2: "#161925",
+          2: "#070815",
           3: "#252A41",
           4: "#1E2757",
         },

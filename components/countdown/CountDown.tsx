@@ -25,7 +25,7 @@ const Timer = () => {
           {
             "size-hour-included": hourIncluded,
             "size-hour-excluded": !hourIncluded,
-          }
+          },
         )}
       >
         {currentTime}

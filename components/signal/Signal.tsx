@@ -58,22 +58,22 @@ const Signal = ({
   }, [timeLeft]);
 
   return (
-    <div className="size-full flex flex-col justify-center items-center gap-10 animate-flash px-5 xl:px-20">
+    <div className="flex size-full animate-flash flex-col items-center justify-center gap-10 px-5 xl:px-20">
       {closeButton && (
         <IconButton
           className="absolute right-[2%] top-[7%]"
           onClick={handleClick}
         >
-          <CloseIcon className="text-[40px] md:text-[60px] animate-flash rounded-full p-2" />
+          <CloseIcon className="animate-flash rounded-full p-2 text-[40px] md:text-[60px]" />
         </IconButton>
       )}
 
-      <h1 className="size-message font-bold text-center leading-none">
+      <h1 className="size-message text-balance text-center font-bold leading-none">
         {message.toUpperCase()}
       </h1>
 
       {skipButton && (
-        <Button className=" text-white text-xs lg:text-lg w-[200px] p-6">
+        <Button className=" w-[200px] p-6 text-xs text-white lg:text-lg">
           Skip Now! <span className="pl-4">{`(${timeLeft})`}</span>
         </Button>
       )}

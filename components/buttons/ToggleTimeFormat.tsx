@@ -18,6 +18,7 @@ const ToggleTimeFormat = () => {
     <Button
       type="submit"
       onClick={handleToggleFormat}
+      variant="outline"
       className={"timer-button"}
     >
       {buttonName.toUpperCase()}
