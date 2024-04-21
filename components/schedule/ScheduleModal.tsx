@@ -73,7 +73,7 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
 
         return acc;
       },
-      { converted: [] as number[], queue: [] as number[] }
+      { converted: [] as number[], queue: [] as number[] },
     );
 
     setTimeItems({
@@ -97,7 +97,7 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
 
   return isClient ? (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none  px-6 py-9 text-white">
+      <DialogContent className="text-light-1 flex w-full max-w-[520px] flex-col gap-6 border-none px-6 py-9 dark:text-white">
         <div className="flex flex-col gap-6">
           <h1 className="text-3xl font-bold leading-[42px]">
             Create a Program
@@ -106,17 +106,17 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
           <Form {...form}>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="space-y-5 w-full"
+              className="w-full space-y-5"
             >
               <div>
                 <label>
                   Enter Sessions duration{" "}
-                  <span className="text-gray-600 text-sm">(in minutes)</span>
+                  <span className="text-sm text-gray-600">(in minutes)</span>
                 </label>
                 <div>
                   {fields.map((field, index) => (
                     <div
-                      className="form-control flex gap-2 justify-center items-center"
+                      className="form-control flex items-center justify-center gap-2"
                       key={field.id}
                     >
                       <Input
@@ -133,9 +133,9 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
                           onClick={index > 0 ? () => remove(index) : () => {}}
                         >
                           <Close
-                            className={cn("p-2 size-10 hover:bg-dark-3", {
-                              "text-white": index > 1,
-                              "text-opacity-0": index <= 1,
+                            className={cn("size-10 p-2 hover:bg-dark-3", {
+                              "text-light-1 dark:text-white": index > 1,
+                              "opacity-0": index <= 1,
                             })}
                           />
                         </IconButton>
@@ -145,11 +145,11 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
                 </div>
               </div>
 
-              <div className="flex gap-4  items-center">
+              <div className="flex items-center  gap-4">
                 <Button
                   type="button"
                   variant="outline"
-                  className="focus-visible:ring-0 focus-visible:ring-offset-0 text-white"
+                  className="text-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:text-white"
                   onClick={() => append({ duration: "" })}
                 >
                   Add Session
@@ -159,7 +159,7 @@ const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
                   type="submit"
                   disabled={isSubmitting}
                   className={
-                    "bg-blue-1  focus-visible:ring-0 focus-visible:ring-offset-0 text-white"
+                    "bg-blue-1  text-white focus-visible:ring-0 focus-visible:ring-offset-0"
                   }
                 >
                   {isSubmitting ? "Creating Event" : "Create Event"}

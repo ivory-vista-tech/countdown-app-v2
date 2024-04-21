@@ -25,9 +25,9 @@ const ModeToggle = () => {
   return isClient ? (
     <Button variant="outline" size="icon" onClick={changeTheme}>
       {theme === "light" ? (
-        <LightMode className="size-5" />
+        <LightMode className="icon size-5" />
       ) : (
-        <DarkMode className="size-5" />
+        <DarkMode className="icon size-5" />
       )}
     </Button>
   ) : null;

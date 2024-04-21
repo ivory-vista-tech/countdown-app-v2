@@ -9,7 +9,7 @@ const Sidebar = () => {
   const { setFeature, feature } = useContext(DataContext);
 
   return (
-    <section className="sticky left-0 top-0 flex flex-col justify-between border-x bg-dark-1 pt-10 text-white backdrop-blur-lg dark:opacity-75 max-sm:hidden lg:w-[264px] xl:pt-28">
+    <section className="bg-light-2 sticky left-0 top-0 flex flex-col justify-between border-x pt-10 text-white backdrop-blur-lg dark:bg-dark-1 dark:opacity-75 max-sm:hidden lg:w-[264px] xl:pt-28">
       <div className="flex flex-1 flex-col gap-6">
         {sidebarLinks.map((item) => {
           const isActive = feature === item.route;

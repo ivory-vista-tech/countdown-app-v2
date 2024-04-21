@@ -58,7 +58,7 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
       className={cn(
         "flex h-[40px] cursor-pointer items-center justify-center px-6",
         {
-          "rounded-3xl bg-primary": isEqualTimeItems,
+          "rounded-3xl bg-primary text-white": isEqualTimeItems,
           "text-gray-500": !isEqualTimeItems,
         },
       )}

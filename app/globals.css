@@ -63,7 +63,7 @@
 
 @layer utilities {
   .icon {
-    @apply text-[30px] text-dark-3 dark:text-white md:text-[40px];
+    @apply text-light-1 text-[30px] dark:text-white md:text-[40px];
   }
 
   .timer-button {
@@ -75,18 +75,18 @@
   }
 
   .size-hour-included {
-    @apply text-[60px] font-extrabold leading-none tracking-tighter text-dark-3 dark:text-white sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px];
+    @apply text-light-1 text-[60px] font-extrabold leading-none tracking-tighter dark:text-white sm:text-[80px] md:text-[100px] lg:text-[180px] 2xl:text-[280px];
   }
 
   .size-hour-excluded {
-    @apply text-[80px] font-extrabold leading-none tracking-tighter text-dark-3 dark:text-white sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px];
+    @apply text-light-1 text-[80px] font-extrabold leading-none tracking-tighter dark:text-white sm:text-[100px] md:text-[120px] lg:text-[200px] 2xl:text-[400px];
   }
 
   .size-AmPm-included {
-    @apply text-[50px] leading-none tracking-tighter text-dark-3 dark:text-white sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
+    @apply text-light-1 text-[50px] leading-none tracking-tighter dark:text-white sm:text-[60px] md:text-[80px] lg:text-[140px] 2xl:text-[220px];
   }
 
   .size-message {
-    @apply text-balance text-[30px] leading-none tracking-tighter sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px];
+    @apply text-light-1 text-balance text-[30px] leading-none tracking-tighter dark:text-white sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px];
   }
 }
