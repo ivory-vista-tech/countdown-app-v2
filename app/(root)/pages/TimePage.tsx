@@ -1,5 +1,6 @@
 "use client";
 
+import Block from "@/components/block/Block";
 import Controls from "@/components/controls/Controls";
 import Time from "@/components/time/Time";
 import { DataContext } from "@/providers/DataProvider";
@@ -16,18 +17,14 @@ const TimePage = () => {
 
   return isClient ? (
     <div className="flex size-full flex-col">
-      {isVisible ? (
-        <Controls setSchedule={undefined} />
-      ) : (
-        <div className="h-[100px]" />
-      )}
+      {isVisible ? <Controls setSchedule={undefined} /> : <Block />}
 
       <Time />
 
-      <div className="h-[100px]" />
+      <Block />
     </div>
   ) : (
-    <div className="h-screen" />
+    <Block size="full" />
   );
 };
 

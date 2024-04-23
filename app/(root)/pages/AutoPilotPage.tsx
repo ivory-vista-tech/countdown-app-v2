@@ -8,6 +8,7 @@ import Alert from "@/components/alert/Alert";
 import TimeUp from "@/components/timeUp/TimeUp";
 import Signal from "@/components/signal/Signal";
 import Controls from "@/components/controls/Controls";
+import Block from "@/components/block/Block";
 
 const AutoPilotPage = () => {
   const [schedule, setSchedule] = useState<boolean>(false);
@@ -28,7 +29,7 @@ const AutoPilotPage = () => {
   }, [setFeature]);
 
   return isClient ? (
-    <div className="flex size-full flex-col">
+    <div className="flex size-full flex-col items-center justify-center">
       <Alert displayTimeMilliseconds={300000} />
 
       <Alert displayTimeMilliseconds={120000} />
@@ -43,11 +44,7 @@ const AutoPilotPage = () => {
         !showTimeUp &&
         !isBreakTime &&
         timeItems.totalMilliseconds !== 1000 &&
-        (isVisible ? (
-          <Controls setSchedule={setSchedule} />
-        ) : (
-          <div className="h-[100px]" />
-        ))}
+        (isVisible ? <Controls setSchedule={setSchedule} /> : <Block />)}
 
       {!showAlert &&
         !isBreakTime &&
@@ -66,7 +63,7 @@ const AutoPilotPage = () => {
       />
     </div>
   ) : (
-    <div className="h-screen" />
+    <Block size="full" />
   );
 };
 

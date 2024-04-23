@@ -1,5 +1,6 @@
 "use client";
 
+import Block from "@/components/block/Block";
 import Controls from "@/components/controls/Controls";
 import Message from "@/components/message/Message";
 import { DataContext } from "@/providers/DataProvider";
@@ -16,20 +17,16 @@ const MessagePage = () => {
 
   return isClient ? (
     <div className="flex size-full flex-col">
-      {isVisible ? (
-        <Controls setSchedule={undefined} />
-      ) : (
-        <div className="h-[100px]" />
-      )}
+      {isVisible ? <Controls setSchedule={undefined} /> : <Block />}
 
-      <div className="flex-1 px-5 xl:px-20">
+      <div className="flex-1">
         <Message />
       </div>
 
-      <div className="h-[100px]" />
+      <Block />
     </div>
   ) : (
-    <div className="h-screen" />
+    <Block size="full" />
   );
 };
 

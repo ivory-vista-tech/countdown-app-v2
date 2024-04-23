@@ -1,6 +1,7 @@
 "use client";
 
 import Alert from "@/components/alert/Alert";
+import Block from "@/components/block/Block";
 import Controls from "@/components/controls/Controls";
 import CountDown from "@/components/countdown/CountDown";
 import TimeUp from "@/components/timeUp/TimeUp";
@@ -28,11 +29,7 @@ const CountDownPage = () => {
 
       {!showAlert &&
         !showTimeUp &&
-        (isVisible ? (
-          <Controls setSchedule={undefined} />
-        ) : (
-          <div className="h-[100px]" />
-        ))}
+        (isVisible ? <Controls setSchedule={undefined} /> : <Block />)}
 
       {!showAlert && !showTimeUp && (
         <div className="flex-1">
@@ -41,7 +38,7 @@ const CountDownPage = () => {
       )}
     </div>
   ) : (
-    <div className="h-screen" />
+    <Block size="full" />
   );
 };
 

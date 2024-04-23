@@ -7,6 +7,7 @@ import PresetBlock from "../editCountdown/PresetBlock";
 import EditCountDown from "../editCountdown/EditCountDown";
 import { cn } from "@/lib/utils";
 import ScheduleStepper from "../stepper/ScheduleStepper";
+import Block from "../block/Block";
 
 const Timer = () => {
   const { timeItems, isPlaying, isVisible, editMode, feature, showAlert } =
@@ -18,10 +19,10 @@ const Timer = () => {
   return editMode ? (
     <EditCountDown />
   ) : (
-    <div className="flex flex-col justify-between items-center size-full">
+    <div className="flex size-full flex-col items-center justify-between">
       <h1
         className={cn(
-          "w-full flex justify-center items-center text-center font-bold flex-1",
+          "flex w-full flex-1 items-center justify-center text-center font-bold",
           {
             "size-hour-included": hourIncluded,
             "size-hour-excluded": !hourIncluded,
@@ -62,6 +63,6 @@ export const BottomBlock = ({
   } else if (!showAlert && feature === "auto-pilot") {
     return <ScheduleStepper queue={stepperQueue} />;
   } else {
-    return <div className="h-[100px]" />;
+    return <Block />;
   }
 };

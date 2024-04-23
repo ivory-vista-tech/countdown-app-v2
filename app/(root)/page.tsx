@@ -12,13 +12,13 @@ const Home = () => {
   const { feature } = useContext(DataContext);
 
   return (
-    <>
+    <section className="size-full px-5 xl:px-20">
       {feature === "home" && <HomePage />}
       {feature === "auto-pilot" && <AutoPilotPage />}
       {feature === "countdown" && <CountDownPage />}
       {feature === "time" && <TimePage />}
       {feature === "message" && <MessagePage />}
-    </>
+    </section>
   );
 };
 

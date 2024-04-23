@@ -17,7 +17,7 @@ const Controls = ({ setSchedule }: SetScheduleProps) => {
 
   return (
     <div className="flex w-full min-w-full justify-center">
-      <div className="mx-[4px] flex h-[100px] w-full max-w-[1440px] items-center justify-center gap-4 md:mx-[40px] lg:mx-[100px]">
+      <div className="flex h-[100px] w-full max-w-[1440px] items-center justify-center gap-4">
         <div className="flex-1">
           {feature === "countdown" && <SetCountdown />}
           {feature === "auto-pilot" && (
