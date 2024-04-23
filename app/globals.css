@@ -55,7 +55,10 @@
   * {
     @apply border-border;
   }
-
+  ul,
+  ol {
+    padding: 0 1rem;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -87,6 +90,6 @@
   }
 
   .size-message {
-    @apply text-light-1 text-balance text-[30px] leading-none tracking-tighter dark:text-white sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px];
+    @apply text-balance text-[30px] leading-none tracking-tighter sm:text-[50px] md:text-[60px] lg:text-[100px] 2xl:text-[220px];
   }
 }

@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { getMilliseconds } from "@/utils/functions";
 import { DataContext } from "@/providers/DataProvider";
 
-interface MeetingModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
@@ -24,7 +24,7 @@ type FormValues = {
   }[];
 };
 
-const ScheduleModal = ({ isOpen, onClose }: MeetingModalProps) => {
+const ScheduleModal = ({ isOpen, onClose }: ModalProps) => {
   const [isClient, setIsClient] = useState(false);
   const { timeItems, setTimeItems, setActiveStep } = useContext(DataContext);
   const { toast } = useToast();

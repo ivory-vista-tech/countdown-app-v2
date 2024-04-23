@@ -104,7 +104,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
   const [message, setMessage] = useLocalStorage({
     key: "message",
     defaultValue: JSON.stringify({
-      message: "You have 5 more minutes!",
+      message: "<h1>Type your message here...</h1>",
       tempMessage: "",
     }),
   });
