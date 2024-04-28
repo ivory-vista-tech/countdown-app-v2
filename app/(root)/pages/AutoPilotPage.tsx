@@ -50,7 +50,7 @@ const AutoPilotPage = () => {
         !isBreakTime &&
         !showTimeUp &&
         timeItems.totalMilliseconds !== 1000 && (
-          <div className="flex-1">
+          <div className="size-full flex-1">
             <CountDown />
           </div>
         )}

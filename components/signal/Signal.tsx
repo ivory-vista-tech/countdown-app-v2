@@ -58,7 +58,7 @@ const Signal = ({
   }, [timeLeft]);
 
   return (
-    <div className="flex size-full animate-flash flex-col items-center justify-center gap-10 px-5 xl:px-20">
+    <div className="flex size-full animate-flash flex-col items-center justify-center gap-10 px-5">
       {closeButton && (
         <IconButton
           className="absolute right-[2%] top-[7%]"
@@ -74,7 +74,7 @@ const Signal = ({
 
       {skipButton && (
         <Button className=" w-[200px] p-6 text-xs text-white lg:text-lg">
-          Skip Now! <span className="pl-4">{`(${timeLeft})`}</span>
+          Next Session In <span className="pl-4">{`(${timeLeft})`}</span>
         </Button>
       )}
     </div>
