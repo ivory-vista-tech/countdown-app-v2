@@ -58,25 +58,27 @@ const Signal = ({
   }, [timeLeft]);
 
   return (
-    <div className="flex size-full animate-flash flex-col items-center justify-center gap-10 px-5">
-      {closeButton && (
-        <IconButton
-          className="absolute right-[2%] top-[7%]"
-          onClick={handleClick}
-        >
-          <CloseIcon className="animate-flash rounded-full p-2 text-[40px] md:text-[60px]" />
-        </IconButton>
-      )}
+    <div className="absolute inset-0 h-screen w-screen bg-white">
+      <div className="flex size-full animate-flash flex-col items-center justify-center gap-10 px-5">
+        {closeButton && (
+          <IconButton
+            className="absolute right-[2%] top-[7%]"
+            onClick={handleClick}
+          >
+            <CloseIcon className="animate-flash rounded-full p-2 text-[40px] md:text-[60px]" />
+          </IconButton>
+        )}
 
-      <h1 className="size-message text-balance text-center font-bold leading-none">
-        {message.toUpperCase()}
-      </h1>
+        <h1 className="size-message text-balance text-center font-bold leading-none">
+          {message.toUpperCase()}
+        </h1>
 
-      {skipButton && (
-        <Button className=" w-[200px] p-6 text-xs text-white lg:text-lg">
-          Next Session In <span className="pl-4">{`(${timeLeft})`}</span>
-        </Button>
-      )}
+        {skipButton && (
+          <Button className=" w-[200px] p-6 text-xs text-white lg:text-lg">
+            Next Session In <span className="pl-4">{`(${timeLeft})`}</span>
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
