@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import DataProvider from "@/providers/DataProvider";
 import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +31,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
             disableTransitionOnChange
           >
             <DataProvider>
-              {children}
-
+              <TooltipProvider>{children}</TooltipProvider>
               <Toaster />
             </DataProvider>
           </ThemeProvider>

@@ -8,7 +8,7 @@ const TIME_OUT = 10_000;
 const ONE_SECOND = 1_000;
 const WAIT_TIME = 5_000;
 
-interface TimeItems {
+export interface TimeItems {
   hours: number;
   minutes: number;
   seconds: number;
