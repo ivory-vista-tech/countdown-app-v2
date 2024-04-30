@@ -10,8 +10,8 @@ const Features = () => {
 
   return (
     <section>
-      <div className="bg-light-3 flex-1 rounded-lg border p-2 opacity-90 dark:bg-dark-1">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex-1 rounded-lg border bg-light-3 p-2 opacity-90 dark:bg-dark-1">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {features.map((feature, idx) => {
             const { icon, title, description, link, className } = feature;
 
