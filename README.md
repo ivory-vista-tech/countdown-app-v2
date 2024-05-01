@@ -1,6 +1,6 @@
 # Aeon Timer
 
-Aeon Timer is a countdown Next.js application hosted at [https://aeon-timer-v2.netlify.app/](https://aeon-timer-v2.netlify.app/). It provides users with a versatile countdown feature along with additional functionalities like time, messages, and an auto-countdown feature.
+Aeon Timer is a countdown Next.js application hosted at [Aeon Timer](https://aeon-timer-v2.vercel.app/). It provides users with a versatile countdown feature along with additional functionalities like time, messages, and an auto-countdown feature.
 
 ## Features
 
