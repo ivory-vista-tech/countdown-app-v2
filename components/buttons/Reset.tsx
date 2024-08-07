@@ -2,7 +2,6 @@
 
 import React, { useContext } from "react";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { IconButton } from "@mui/material";
 import { DataContext, TimeItems } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
@@ -39,19 +38,17 @@ const Reset = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <IconButton
-          onClick={() =>
-            toggleReset({
-              setIsPlaying,
-              setTimeItems,
-              setActiveStep,
-              timeItems,
-            })
-          }
-        >
-          <RestartAltIcon className="icon" />
-        </IconButton>
+      <TooltipTrigger
+        onClick={() =>
+          toggleReset({
+            setIsPlaying,
+            setTimeItems,
+            setActiveStep,
+            timeItems,
+          })
+        }
+      >
+        <RestartAltIcon className="icon" />
       </TooltipTrigger>
 
       <TooltipContent>

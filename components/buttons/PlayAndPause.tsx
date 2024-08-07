@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
-import { IconButton } from "@mui/material";
 import { DataContext, TimeItems } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
@@ -62,25 +61,23 @@ const PlayAndPause = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <IconButton
-          onClick={() =>
-            handlePlayToggle({
-              setIsPlaying,
-              isPlaying,
-              setEditMode,
-              editMode,
-              setTimeItems,
-              timeItems,
-            })
-          }
-        >
-          {isPlaying ? (
-            <PauseCircleOutlineIcon className="icon" />
-          ) : (
-            <PlayCircleOutlineIcon className="icon" />
-          )}
-        </IconButton>
+      <TooltipTrigger
+        onClick={() =>
+          handlePlayToggle({
+            setIsPlaying,
+            isPlaying,
+            setEditMode,
+            editMode,
+            setTimeItems,
+            timeItems,
+          })
+        }
+      >
+        {isPlaying ? (
+          <PauseCircleOutlineIcon className="icon" />
+        ) : (
+          <PlayCircleOutlineIcon className="icon" />
+        )}
       </TooltipTrigger>
 
       <TooltipContent>

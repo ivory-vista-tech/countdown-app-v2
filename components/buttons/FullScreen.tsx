@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-import { IconButton } from "@mui/material";
 import { DataContext } from "@/providers/DataProvider";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
@@ -46,14 +45,12 @@ const FullScreen = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <IconButton onClick={toggleFullscreen}>
-          {isFullscreen ? (
-            <FullscreenExitIcon className="icon" />
-          ) : (
-            <FullscreenIcon className="icon" />
-          )}
-        </IconButton>
+      <TooltipTrigger onClick={toggleFullscreen}>
+        {isFullscreen ? (
+          <FullscreenExitIcon className="icon" />
+        ) : (
+          <FullscreenIcon className="icon" />
+        )}
       </TooltipTrigger>
 
       <TooltipContent>

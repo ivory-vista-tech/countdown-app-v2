@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { DarkMode, LightMode } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
@@ -25,14 +24,15 @@ const ModeToggle = () => {
 
   return isClient ? (
     <Tooltip>
-      <TooltipTrigger>
-        <Button variant="outline" size="icon" onClick={changeTheme}>
-          {theme === "light" ? (
-            <LightMode className="icon size-5" />
-          ) : (
-            <DarkMode className="icon size-5" />
-          )}
-        </Button>
+      <TooltipTrigger
+        onClick={changeTheme}
+        className="border-1 rounded-lg border p-2"
+      >
+        {theme === "light" ? (
+          <LightMode className="icon size-5" />
+        ) : (
+          <DarkMode className="icon size-5" />
+        )}
       </TooltipTrigger>
 
       <TooltipContent>
