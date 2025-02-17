@@ -48,6 +48,7 @@ interface DataContextType {
   setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
   activeStep: number;
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  WAIT_TIME: number;
 }
 
 const initialContext: DataContextType = {
@@ -83,6 +84,7 @@ const initialContext: DataContextType = {
   setMessage: () => {},
   twentyFourHoursFormat: true,
   setTwentyFourHoursFormat: () => {},
+  WAIT_TIME
 };
 
 export const DataContext = createContext(initialContext);
@@ -246,6 +248,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
         setIsFullscreen,
         twentyFourHoursFormat,
         setTwentyFourHoursFormat,
+        WAIT_TIME
       }}
     >
       {children}
