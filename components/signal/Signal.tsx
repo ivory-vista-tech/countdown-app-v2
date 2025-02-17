@@ -26,9 +26,10 @@ const Signal = ({
     setTimeItems,
     timeItems,
     setShowTimeUp,
+    WAIT_TIME
   } = useContext(DataContext);
 
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(WAIT_TIME);
 
   const handleClick = () => {
     setShowAlert(false);
