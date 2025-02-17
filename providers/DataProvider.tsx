@@ -6,7 +6,7 @@ import { getMilliseconds } from "@/utils/functions";
 
 const TIME_OUT = 10_000;
 const ONE_SECOND = 1_000;
-const WAIT_TIME = 5_000;
+const WAIT_TIME = 10_000;
 
 export interface TimeItems {
   hours: number;
