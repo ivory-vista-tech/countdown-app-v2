@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { useTheme } from "next-themes";
 import { DarkMode, LightMode } from "@mui/icons-material";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
@@ -26,7 +25,7 @@ const ModeToggle = () => {
     <Tooltip>
       <TooltipTrigger
         onClick={changeTheme}
-        className="border-1 rounded-lg border p-2"
+        className="border-1 flex items-center justify-center rounded-lg border p-2"
       >
         {theme === "light" ? (
           <LightMode className="icon size-5" />

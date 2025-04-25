@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useContext, useMemo } from "react";
-import { isEqual } from "lodash";
+import { cn } from "@/lib/utils";
 import { DataContext } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
-import { cn } from "@/lib/utils";
+import { isEqual } from "lodash";
+import React, { useContext, useMemo } from "react";
 
 interface TimeItems {
   hours: number;
@@ -56,10 +56,10 @@ const Preset: React.FC<PresetProps> = ({ presetTime }) => {
     <div
       onClick={handleClick}
       className={cn(
-        "flex h-[40px] cursor-pointer items-center justify-center px-6",
+        "flex h-[40px] cursor-pointer items-center justify-center px-6 transition-all duration-200",
         {
-          "rounded-3xl bg-primary text-white": isEqualTimeItems,
-          "text-gray-500": !isEqualTimeItems,
+          "rounded-3xl bg-primary text-white hover:bg-primary/90 hover:shadow-md": isEqualTimeItems,
+          "rounded-3xl border-2 text-gray-500 hover:border-primary/70 hover:text-primary hover:shadow-sm": !isEqualTimeItems,
         },
       )}
     >
