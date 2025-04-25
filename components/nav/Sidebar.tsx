@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { getIcon, sidebarLinks } from "../constants";
-import { useContext } from "react";
 import { DataContext } from "@/providers/DataProvider";
+import { useContext } from "react";
+import { getIcon, sidebarLinks } from "../constants";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const Sidebar = () => {

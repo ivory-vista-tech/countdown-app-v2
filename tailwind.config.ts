@@ -102,20 +102,22 @@ const config = {
           to: { height: "0" },
         },
         blink: {
-          "100%": {
-            backgroundColor: "red",
-            color: "white",
+          "0%, 100%": {
+            backgroundColor: "hsl(var(--destructive))",
+            color: "hsl(var(--destructive-foreground))",
+            transform: "scale(1.05)",
           },
           "50%": {
-            backgroundColor: "white",
-            color: "red",
+            backgroundColor: "transparent",
+            color: "hsl(var(--destructive))",
+            transform: "scale(1)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        flash: "blink 4s infinite",
+        flash: "blink 3s ease-in-out infinite",
       },
       backgroundImage: {
         hero: "url('/hero-2.jpeg')",

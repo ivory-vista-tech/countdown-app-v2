@@ -1,10 +1,10 @@
 "use client";
 
-import { IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "@/providers/DataProvider";
 import { getMilliseconds } from "@/utils/functions";
+import CloseIcon from "@mui/icons-material/Close";
+import { IconButton } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
 interface SignalProps {
@@ -26,7 +26,7 @@ const Signal = ({
     setTimeItems,
     timeItems,
     setShowTimeUp,
-    WAIT_TIME
+    WAIT_TIME,
   } = useContext(DataContext);
 
   const [timeLeft, setTimeLeft] = useState(WAIT_TIME / 1000);
