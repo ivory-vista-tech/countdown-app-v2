@@ -58,33 +58,33 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         dark: {
-          1: "#0D1228",
-          2: "#161925",
-          3: "#252A41",
-          4: "#1E2757",
+          1: "#0A1128",
+          2: "#1D2D44",
+          3: "#3E5C76",
+          4: "#2B4257",
         },
         light: {
-          1: "#484B6A",
-          2: "#9394A5",
-          3: "#D2D3DB",
-          4: "#E4E5F1",
+          1: "#5C6784",
+          2: "#8D92A8",
+          3: "#E2E4ED",
+          4: "#F0F2F9",
         },
         blue: {
-          1: "#0E78F9",
+          1: "#2563EB",
         },
         sky: {
-          1: "#C9DDFF",
-          2: "#ECF0FF",
-          3: "#F5FCFF",
+          1: "#BAD7F2",
+          2: "#E1EFFE",
+          3: "#F0F9FF",
         },
         orange: {
-          1: "#FF742E",
+          1: "#F97316",
         },
         purple: {
-          1: "#830EF9",
+          1: "#7C3AED",
         },
         yellow: {
-          1: "#F9A90E",
+          1: "#FBBF24",
         },
       },
       borderRadius: {
